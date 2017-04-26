@@ -1,7 +1,7 @@
 {
-  "name": "basket",
+  "name": "testshop",
   "version": "1.0.0",
-  "description": "",
+  "description": "angular shop",
   "main": "server.js",
   "dependencies": {
     "bson": "^1.0.4",
@@ -42,5 +42,13 @@
     "start": "node server.js"
   },
   "author": "Ohorenko V.O.",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/expirient/treiningShop.git"
+  },
+  "bugs": {
+    "url": "https://github.com/expirient/treiningShop/issues"
+  },
+  "homepage": "https://github.com/expirient/treiningShop#readme"
 }
