@@ -1,0 +1,48 @@
+<div ng-controller="categoryCtrl">
+  <form role='form' novalidate>
+    <div class="form-group">
+      <label for="name">Назва товару:</label>
+      <input type="text" class="form-control" name="name" id="name" placeholder="Name" ng-model='newp.name' required>
+    </div>
+    <div class="form-group">
+      <label for="model">Модель:</label>
+      <input type="text" class="form-control" name="model" id="model" placeholder="Model" ng-model='newp.model' required>
+    </div>
+    <div class="form-group">
+      <!-- <label for="category">Категорія:</label>
+      <input type="text" class="form-control" name="category" id="category" placeholder="Category" ng-model='newp.category' required> -->
+      <select class="form-control" ng-model="newp.category"><option class="form-control" ng-repeat="item in categorys" selected="selected">{{item.name}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="count">Кількість:</label>
+      <input type="text" class="form-control" name="count" id="count" placeholder="Count" ng-model='newp.count' required>
+    </div>
+    <div class="form-group">
+      <label for="price">Ціна:</label>
+      <input type="text" class="form-control" name="price" id="price" placeholder="Price" ng-model='newp.price' required>
+    </div>
+    <!-- <div class="form-group">
+      <label for="path">Шлях Для Фото:</label>
+      <input type="text" class="form-control" name="path" id="path" placeholder="Path" ng-model='newp.path' required>
+    </div> -->
+    <div class="form-group">
+      <label for="description">Опис:</label>
+      <input type="text" class="form-control" name="description" id="description" placeholder="Description" ng-model='newp.description' required>
+    </div>
+  </form> 
+
+    <input type="text" ng-model='newp.path' placeholder="Path" class="form-control">
+    
+  <form method="POST" action="/uploadFile" enctype="multipart/form-data" target="result">
+      <input type="file" name="upl">
+      <input type="submit" class="btn btn-success" value="Завантажити">
+  </form>
+      <iframe name="result" class="myIframe" send-data></iframe>
+
+  <button type="submit" class="btn btn-primary" ng-click="addProduct(newp)">Add Product</button>
+  <button type="submit" class="btn btn-primary" ng-click="saveProduct(newp)">Save Product</button>
+  <!-- <div order-list="products" display='name model'>
+    
+  </div> -->
+</div>

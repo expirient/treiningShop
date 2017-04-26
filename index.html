@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app='mainApp'>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Lesson 86 Shop</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" href="css/media.css" />
+	<link rel="stylesheet" href="css/bootstrap.css" />
+	<link rel="shortcut icon" href="favicon.png"/>
+	<script src="https://use.fontawesome.com/c3d1976be9.js"></script>
+	<script src='angular/angular.js'></script>
+	<!-- <script src='angular/angular.min.js'></script> -->
+	<script src="jquery.js"></script>
+	<script src="js/script.js"></script>
+	<script src='module/cart.js'></script>
+	<script src='module/product.js'></script>
+	<script src='module/pagination.js'></script>
+	<script src='module/category.js'></script>
+	<script src='module/order.js'></script>
+	<!-- <script src='js/localization_Ukraine.js'></script> -->
+	<script src='module/main.js'></script>
+</head>
+<body ng-controller="mainCtrl">
+	
+	<div id="wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-primary" ng-controller="productCtrl">
+						<div ng-controller="cartCtrl">
+							<div class="panel-heading myHeading">
+								{{headingView}}
+								<button ng-click="showProduct()" class="btn btn-info goToProducts" ng-hide="current.currentView == 'view/products.html'">Товари</button>
+								<!-- <button class="btn btn-info" ng-click="showAddProduct()" ng-hide="current.currentView == 'addProduct.html'"> Додати товар </button> -->
+								<button ng-click="showCart()" class="btn btn-info cartButton">
+								<i class="fa fa-shopping-cart fa-lg"></i> Корзина <span class="badge" ng-show="cart.length > 0">{{cart.length}}</span></button>
+							</div>
+							<div class='searching_div'>
+								<input type="text" placeholder="Пошук" ng-model='query' ng-show="current.currentView == 'view/products.html'">
+							</div>
+							<div class="panel-body" ng-include="current.currentView" scope="" onload="">
+							
+							</div>
+						</div>	
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div> <!-- finish wrapper -->
+	
+</body>
+</html>

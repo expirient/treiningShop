@@ -1,0 +1,34 @@
+
+<div ng-controller="paginationCtrl">
+	<div class="col-md-6 col-sm-4" ng-repeat="item in items | filter:query" >
+		<div class="thumbnail galery-block">
+			<img src="{{item.path}}" alt="Foto is not found" ng-click="showDescription = ! showDescription" title="Детальна інформація">
+			<h4>{{item.name}} {{item.model}}</h4>
+			<p>{{item.category}}</p>
+			<h4>{{item.price}} грн.</h4>
+			<button class="btn btn-success" ng-click="addProductCart(item)">
+			<i class="fa fa-shopping-cart fa-lg"></i> Купити
+			</button>
+			<h5 class="forShow" ng-show="showDescription" ng-click="showDescription = ! showDescription">{{item.description}}</h5>
+		</div>
+	</div>
+	<div class="container for-pagination">
+		<div class="row">
+			<div class="col-md-12">
+				<ul class="pagination" ng-if="obj.pages.length">
+				    
+				    <li ng-class="{disabled: obj.currentPage == 1}"><a href="#" ng-click="setPage(1)">First</a></li>
+				    <li ng-class="{disabled: obj.currentPage == 1}"><a href="#" ng-click="setPage(obj.currentPage - 1)">Previous</a></li>
+
+				    <li ng-repeat="page in obj.pages" ng-class="{active: page == obj.currentPage}">
+				    <a href="#" ng-click="setPage(page)">{{page}}</a>
+				    </li>
+
+					<li ng-class="{disabled: obj.currentPage == obj.totalPage}"><a href="#" ng-click="setPage(obj.currentPage + 1)">Next</a></li>
+					<li ng-class="{disabled: obj.currentPage == obj.totalPage}"><a href="#" ng-click="setPage(obj.totalPage)">Last</a></li>
+				   
+				</ul>
+			</div>
+		</div>
+	</div>			
+</div>	

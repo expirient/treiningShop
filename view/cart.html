@@ -1,0 +1,31 @@
+
+<!-- <button ng-click="showProduct()" class="btn btn-info goToProducts">Products</button> -->
+
+<table class="table table-striped table-bordered myTable">
+	<tr>
+		<th>Назва товару</th>
+		<th>Кількість товару</th>
+		<th>Ціна</th>
+		<th>Відміна</th>
+	</tr>
+	<tr ng-repeat="item in cart">
+		<td>{{item.name}} {{item.model}}</td>
+		<td><button class="minus" ng-click="minusCount(item)">-</button>{{item.newcount}}<button class="plus" ng-click="plusCount(item)">+</button></td>
+		<td>{{item.newprice}}</td>
+		<td><button class="btn btn-danger btn-xs" ng-click="delete(item)"><i class="fa fa-trash-o"></i></button></td>
+	</tr>
+</table>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h4>Загальна вартість: {{totalSum()}} грн</h4>
+			<button class="btn btn-success order" ng-click="showForm = ! showForm">Оформити Замовлення</button>
+		</div>
+	</div>
+	<div class="for-phone" ng-show="showForm">
+		<form action="" class="form-order">
+			<input type="text" placeholder="Введіть номер телефону:" class="form-control" ng-model='order.phone'>
+			<input type="button" value="Завершити оформлення" class="btn btn-success" ng-click="sendOrder(order)">
+			<input type="button" ng-click="showForm = ! showForm" class="btn btn-warning" value="Відмінити">
+			<!-- <h4 id="myDate">{{today | date: 'dd.MM.yyyy HH:mm:ss'}}</h4> -->
+		</form>
+	</div>

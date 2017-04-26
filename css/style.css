@@ -1,0 +1,134 @@
+#wrapper {
+  margin: 20px auto;
+}
+#wrapper .myHeading {
+  overflow: hidden;
+}
+#wrapper .myHeading .cartButton {
+  float: right;
+  outline: none;
+}
+#wrapper .searching_div {
+  width: 50%;
+  margin: 10px 3% 0;
+}
+#wrapper .searching_div input[type='text'] {
+  width: 50%;
+  border-radius: 2px;
+  padding: 0 10px;
+}
+#wrapper .galery-block {
+  position: relative;
+}
+#wrapper .galery-block img {
+  float: right;
+  padding: 0 0 0 10px;
+  width: 190px;
+  height: 120px;
+  cursor: pointer;
+  transition: transform .3s;
+}
+#wrapper .galery-block img:hover {
+  transform: scale(1.2);
+}
+#wrapper .galery-block button {
+  outline: none;
+  z-index: 999;
+}
+#wrapper .galery-block .forShow {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 100%;
+  border-radius: 4px;
+  padding: 50px 30px;
+  background: rgba(22, 22, 22, 0.8);
+  color: #fff;
+  overflow: auto;
+}
+#wrapper .for-pagination {
+  text-align: center;
+}
+#wrapper .for-pagination .active a {
+  background: #333;
+  color: #fff;
+}
+#wrapper .goToProducts {
+  outline: none;
+  margin-left: 30px;
+}
+#wrapper .myTable .minus {
+  margin-left: 10px;
+  background: #E76857;
+}
+#wrapper .myTable .plus {
+  margin-right: 10px;
+  background: #05E763;
+}
+td.descriptions {
+  overflow: hidden;
+}
+.myNav {
+  background: #555;
+  width: 100%;
+}
+.myNav li.active {
+  background: #444;
+  color: #fff;
+}
+.myNav li.active a {
+  background: #444;
+}
+.form-category form input[type='button'] {
+  width: 100%;
+  margin: 10px 0;
+}
+.form-category .categoryTable {
+  width: 100%;
+  text-align: center;
+}
+.form-category .categoryTable .category-btn button {
+  width: 60%;
+}
+.for-phone {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(11, 11, 11, 0.8);
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.for-phone .form-order {
+  width: 50%;
+  margin: 20% auto 0;
+}
+.for-phone .form-order input {
+  width: 60%;
+  display: block;
+  margin: 5px auto;
+}
+.for-phone .form-order h4 {
+  color: #fff;
+}
+.tableOrders th {
+  background: lightblue;
+  text-align: center;
+}
+.tableOrders td {
+  text-align: center;
+  vertical-align: middle;
+}
+.tableOrders .tableForOrders td {
+  width: 14.28571429%;
+  text-align: center;
+  color: darkblue;
+  background: #D2FFE7;
+}
+.tableOrders .tableForOrders td span {
+  color: red;
+}
+.myIframe {
+  display: none;
+}

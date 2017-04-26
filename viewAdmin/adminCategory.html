@@ -1,0 +1,21 @@
+<div ng-controller="categoryCtrl" class="form-category">
+	<div class="forAddCategory">
+			<div class="col-md-3">
+				<form>
+					<p>Категорії:</p>
+					<input type="text" placeholder="Category" ng-model="category.name" class="form-control">
+					<input type="button" name="" value="Зберегти" class="btn btn-success" ng-click="saveCategory(category)">
+				</form>	
+			</div>
+	</div>
+			<div class="col-sm-9">
+				<table class="table table-bordered categoryTable">
+					<tr ng-repeat="item in categorys">
+						<td class="category-btn"><button class="btn btn-info">{{item.name}}</button></td>
+						<td><button class="btn btn-xs btn-danger" ng-click="deleteCategory(item)"><i class="fa fa-trash-o"></i></button></td>
+						<td><button class="btn btn-success btn-xs" ng-click="editOrAdd(item)"><i class="fa fa-upload" aria-hidden="true"></i></button></td>
+					</tr>
+				</table>
+		
+			</div>
+</div>

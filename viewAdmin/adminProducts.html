@@ -1,0 +1,56 @@
+<div ng-controller="paginationCtrl">
+	<div class="col-md-12">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Model</th>
+					<th>Category</th>
+					<th>Count</th>
+					<th>Price</th>
+					<th>Path</th>
+					<th>Description</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in items">
+					<td>{{item.name}}</td>
+					<td>{{item.model}}</td>
+					<td>{{item.category}}</td>
+					<td>{{item.count}}</td>
+					<td>{{item.price}}</td>
+					<td>{{item.path}}</td>
+					<td class="descriptions">{{item.description}}</td>
+					<td>
+						<button class="btn btn-success btn-xs" ng-click="editOrAdd(item)">Edit</button>	
+					</td>
+					<td>
+						<button class="btn btn-danger btn-xs" ng-click="deleteProduct(item)">Delete</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<button class="btn btn-success" ng-click="editOrAdd()">Save</button>
+	</div>
+	<div class="for-pagination">
+		<!-- <div class="row"> -->
+			<!-- <div class="col-md-12"> -->
+				<ul class="pagination" ng-if="obj.pages.length">
+				    
+				    <li ng-class="{disabled: obj.currentPage == 1}"><a href="#" ng-click="setPage(1)">First</a></li>
+				    <li ng-class="{disabled: obj.currentPage == 1}"><a href="#" ng-click="setPage(obj.currentPage - 1)">Previous</a></li>
+
+				    <li ng-repeat="page in obj.pages" ng-class="{active: page == obj.currentPage}">
+				    <a href="#" ng-click="setPage(page)">{{page}}</a>
+				    </li>
+
+					<li ng-class="{disabled: obj.currentPage == obj.totalPage}"><a href="#" ng-click="setPage(obj.currentPage + 1)">Next</a></li>
+					<li ng-class="{disabled: obj.currentPage == obj.totalPage}"><a href="#" ng-click="setPage(obj.totalPage)">Last</a></li>
+				   
+				</ul>
+			<!-- </div>
+					</div>  -->
+	</div>			
+</div>

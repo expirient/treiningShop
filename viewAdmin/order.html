@@ -1,0 +1,43 @@
+<div ng-controller="orderCtrl">
+	<table class="table table-bordered tableOrders">
+		<thead>
+			<tr>
+				<th>Дата Замовлення</th>
+				<th>Клієнт</th>
+				<th>Телефон</th>
+				<th>Замовлення</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in newOrders | orderBy: item.date">
+				<td>{{item.date}}</td>
+				<td>{{item.client}}</td>
+				<td>{{item.phone}}</td>
+				<td>
+					<table  class="tableForOrders table table-bordered">
+						<tr>
+							<th>Назва</th>
+							<th>Модель</th>
+							<th>Категорія</th>
+							<th>Кількість</th>
+							<th>Сума</th>
+							<th>Hа складі</th>
+							<th><button class="btn btn-danger btn-xs">Відмовити</button></th>
+						</tr>
+						
+							<tr ng-repeat="orders in item.order" class="tableForOrders">
+								<td class="td"">{{orders.name}}</td>
+								<td class="td">{{orders.model}}</td>
+								<td class="td" >{{orders.category}}</td>
+								<td class="td">{{orders.newcount}}</td>
+								<td class="td"><span>{{orders.newprice}}</span></td>
+								<td class="td">{{orders.count}}</td>
+								<td><button class="btn btn-success btn-xs">Виконати</button></td>
+							</tr>
+						
+					</table>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
