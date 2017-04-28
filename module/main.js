@@ -1,4 +1,4 @@
-var module = angular.module('mainApp',['productApp','cartApp','paginationApp','categoryApp','orderApp']);
+var module = angular.module('mainApp',['productApp','cartApp','paginationApp','categoryApp','orderApp','usersApp']);
 module.controller('mainCtrl', function($scope){
 	/*$scope.currentView = 'view/products.html';*/
 	$scope.current = {

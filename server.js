@@ -30,6 +30,69 @@ var Products = require('./models/product');
 var Peoples = require('./models/users');
 var Category = require('./models/category');
 var Order = require('./models/orders');
+var Admin = require('./models/admin');
+
+
+					//PASPORT
+/*-------------------------------------------------------*/
+var cookieParser = require('cookie-parser');
+	app.use(cookieParser());
+
+var session = require('cookie-session');
+	app.use(session({keys:['secret'],maxAge: 2*60*60*1000})); // підбор секретного ключа
+
+var passport = require('passport');
+	app.use(passport.initialize()); // приєднали до еkспреса
+	app.use(passport.session()); // приєднуємо до сессії
+
+var localStrategy = require('passport-local').Strategy // підключаємо стратегію для паспорта
+	passport.use(new localStrategy(function(username,password,done){
+		Admin.find({username: username, password: password},function(err,data){
+				console.log(data);
+				if(data.length == 1){
+					//console.log(data[0].name);
+					//console.log(data[0].id);
+					return done(null,{id: data[0]._id});// Вибірка по ід
+					// аутентифікація пройшла успішно
+				}
+				else{
+					return done(null,false);
+				}
+			});
+	}));
+
+	passport.serializeUser(function(user,done){
+		//console.log(user);
+		done(null,user.id);
+	});
+
+	//Десеріалізація пройде тільки після аутентифікаціі користовача
+	// Bсі наступні звернення по id сессії
+	passport.deserializeUser(function(id,done){
+		/*connection.query('SELECT name FROM newpeoples WHERE id = ?'*/
+		Admin.find({_id: id},function(err,data){
+				//console.log(data);
+				done(null,{username:data[0].username, id: data[0]._id}); //Витягуєм імя користувача {username:data[0].name} замість data
+			});
+	});
+
+	var auth = passport.authenticate('local',{
+			successRedirect: '/admin',
+			failureRedirect: '/login'
+	}); // маршрутизація
+	// Перевірка авторизації MiddleWar
+	var myAuth = function(req,res,next){
+		
+		if(req.isAuthenticated())// повертае  true/false
+			next();
+		else
+			res.redirect('/login');
+	}
+	app.post('/login',auth);
+	app.get('/admin',myAuth);
+/*-------------------------------------------------------*/
+
+
 
 app.get('/load',function(req,res){
 	Products.find(function(err,data){
@@ -117,8 +180,22 @@ app.get('/loadOrders',function(req,res){
 		res.send(data);
 	});
 });
+
+app.get('/login',function(req,res){
+	res.sendFile(__dirname + '/viewAdmin/login.html');
+});
 app.get('/admin',function(req,res){
 	res.sendFile(__dirname + '/viewAdmin/admin.html');
 });
+
+app.get('/getUser',function(req,res){
+	//console.log(req.user); 
+	res.send(req.user.username);// дістаємо юзера (обєкт)
+});
+app.get('/logout',function(req,res){
+	req.session = null; // Вбиваємо сессію
+	res.send('logout');
+});
+
 app.listen(process.env.PORT||8080); // задаємо порт
 console.log("Start server!");

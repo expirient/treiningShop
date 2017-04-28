@@ -132,3 +132,27 @@ td.descriptions {
 .myIframe {
   display: none;
 }
+.formForInputFile {
+  margin: 20px auto;
+}
+.formForInputFile input[type='submit'] {
+  margin-top: 10px;
+}
+.adminForm {
+  background: #999;
+}
+.adminForm #myForm {
+  width: 40%;
+  margin: 25% auto 0;
+}
+.adminForm #myForm input {
+  margin-top: 5px;
+}
+.adminHello {
+  margin: 20px 0 10px;
+}
+.adminHello span {
+  font: 20px Verdana;
+  color: red;
+  font-style: italic;
+}

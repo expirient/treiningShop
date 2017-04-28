@@ -18,6 +18,7 @@
 	<script src='module/pagination.js'></script>
 	<script src='module/category.js'></script>
 	<script src='module/order.js'></script>
+	<script src='module/admin.js'></script>
 	<script src='module/main.js'></script>
 </head>
 <body ng-controller="mainCtrl" ng-init="showAdminProducts()">
@@ -34,6 +35,11 @@
 								<button class="btn btn-info" ng-click="showAddProduct()" ng-hide="current.currentView == 'viewAdmin/addProduct.html'"> Додати товар </button>
 								<button class="btn btn-info" ng-click="showAdminOrders()" ng-hide="current.currentView == 'viewAdmin/order.html'"> Замовлення </button>
 								<button class="btn btn-info" ng-click="showAdminProducts()" ng-hide="current.currentView == 'viewAdmin/adminProducts.html'"> Повернутись</button>
+								
+								<div class="adminHello" ng-controller="userCtrl">
+									<h5>Вітаємо на сайті: <span>  {{username}}.</span></h5>
+									<button class="btn btn-danger btn-xs" ng-click="logout()">Розлогуватись</button>
+								</div>
 								<!-- <button ng-click="showCart()" class="btn btn-info cartButton">
 								<i class="fa fa-shopping-cart fa-lg"></i> Корзина <span class="badge" ng-show="cart.length > 0">{{cart.length}}</span></button> -->
 							</div>
