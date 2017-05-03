@@ -10,7 +10,7 @@
 	</tr>
 	<tr ng-repeat="item in cart">
 		<td>{{item.name}} {{item.model}}</td>
-		<td><button class="minus" ng-click="minusCount(item)">-</button>{{item.newcount}}<button class="plus" ng-click="plusCount(item)">+</button></td>
+		<td><button class="btn btn-danger btn-xs minus" ng-click="minusCount(item)">-</button>{{item.newcount}}<button class="btn btn-success btn-xs plus" ng-click="plusCount(item)">+</button></td>
 		<td>{{item.newprice}}</td>
 		<td><button class="btn btn-danger btn-xs" ng-click="delete(item)"><i class="fa fa-trash-o"></i></button></td>
 	</tr>

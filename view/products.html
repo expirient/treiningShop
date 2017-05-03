@@ -1,14 +1,16 @@
 
 <div ng-controller="paginationCtrl">
-	<div class="col-md-6 col-sm-4" ng-repeat="item in items | filter:query" >
+	<div class="col-md-6" ng-repeat="item in items | filter:query" >
 		<div class="thumbnail galery-block">
 			<img src="{{item.path}}" alt="Foto is not found" ng-click="showDescription = ! showDescription" title="Детальна інформація">
 			<h4>{{item.name}} {{item.model}}</h4>
 			<p>{{item.category}}</p>
-			<h4>{{item.price}} грн.</h4>
-			<button class="btn btn-success" ng-click="addProductCart(item)">
-			<i class="fa fa-shopping-cart fa-lg"></i> Купити
-			</button>
+			<h3>{{item.price | number}} грн.</h3>
+			<div class="forButton">
+				<button class="btn btn-success" ng-click="addProductCart(item)">
+				<i class="fa fa-shopping-cart fa-lg"></i> Купити
+				</button>
+			</div>
 			<h5 class="forShow" ng-show="showDescription" ng-click="showDescription = ! showDescription">{{item.description}}</h5>
 		</div>
 	</div>
@@ -17,15 +19,15 @@
 			<div class="col-md-12">
 				<ul class="pagination" ng-if="obj.pages.length">
 				    
-				    <li ng-class="{disabled: obj.currentPage == 1}"><a href="#" ng-click="setPage(1)">First</a></li>
-				    <li ng-class="{disabled: obj.currentPage == 1}"><a href="#" ng-click="setPage(obj.currentPage - 1)">Previous</a></li>
+				    <li ng-class="{disabled: obj.currentPage == 1}"><a href="#" ng-click="setPage(1)">Перша</a></li>
+				    <li ng-class="{disabled: obj.currentPage == 1}"><a href="#" ng-click="setPage(obj.currentPage - 1)">Попередня</a></li>
 
 				    <li ng-repeat="page in obj.pages" ng-class="{active: page == obj.currentPage}">
 				    <a href="#" ng-click="setPage(page)">{{page}}</a>
 				    </li>
 
-					<li ng-class="{disabled: obj.currentPage == obj.totalPage}"><a href="#" ng-click="setPage(obj.currentPage + 1)">Next</a></li>
-					<li ng-class="{disabled: obj.currentPage == obj.totalPage}"><a href="#" ng-click="setPage(obj.totalPage)">Last</a></li>
+					<li ng-class="{disabled: obj.currentPage == obj.totalPage}"><a href="#" ng-click="setPage(obj.currentPage + 1)">Наступна</a></li>
+					<li ng-class="{disabled: obj.currentPage == obj.totalPage}"><a href="#" ng-click="setPage(obj.totalPage)">Остання</a></li>
 				   
 				</ul>
 			</div>

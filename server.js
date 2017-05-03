@@ -48,7 +48,7 @@ var passport = require('passport');
 var localStrategy = require('passport-local').Strategy // підключаємо стратегію для паспорта
 	passport.use(new localStrategy(function(username,password,done){
 		Admin.find({username: username, password: password},function(err,data){
-				console.log(data);
+				//console.log(data);
 				if(data.length == 1){
 					//console.log(data[0].name);
 					//console.log(data[0].id);
@@ -60,6 +60,40 @@ var localStrategy = require('passport-local').Strategy // підключаємо
 				}
 			});
 	}));
+
+/*var NewlocalStrategy = require('passport-local').Strategy
+	passport.use(new NewlocalStrategy(function(login,password,done){
+		Peoples.find({login: login, password: password},function(err,data){
+			console.log(data);
+		});
+	}))	*/
+
+	/*passport.use(new localStrategy(function(login,password,done){
+		Peoples.find({login: login, password: password},function(err,data){
+				//console.log(data);
+				if(data.length == 1){
+					//console.log(data[0].name);
+					//console.log(data[0].id);
+					return done(null,{id: data[0]._id});// Вибірка по ід
+					// аутентифікація пройшла успішно
+				}
+				else{
+					return done(null,false);
+				}
+			});
+	}));
+
+	passport.serializeUser(function(user,done){
+		//console.log(user);
+		done(null,user.id);
+	});
+
+	passport.deserializeUser(function(id,done){
+		Peoples.find({_id: id},function(err,data){
+				//console.log(data);
+				done(null,{login:data[0].login, id: data[0]._id}); //Витягуєм імя користувача {username:data[0].name} замість data
+			});
+	});*/
 
 	passport.serializeUser(function(user,done){
 		//console.log(user);
@@ -180,6 +214,17 @@ app.get('/loadOrders',function(req,res){
 		res.send(data);
 	});
 });
+app.post('/removeOrder',function(req,res){
+	Order.remove({_id: req.body._id},function(err,data){
+		res.send(data);
+	});
+});
+app.post('/removeItemInOrder',function(req,res){
+	//console.log(req.body)
+	Order.update({'order._id':req.body._id},{$pull: {'order':{_id:req.body._id}}},function(err,data){
+		res.send(data);
+	});
+});
 
 app.get('/login',function(req,res){
 	res.sendFile(__dirname + '/viewAdmin/login.html');
@@ -195,6 +240,13 @@ app.get('/getUser',function(req,res){
 app.get('/logout',function(req,res){
 	req.session = null; // Вбиваємо сессію
 	res.send('logout');
+});
+app.get('/isTrueLogin',function(req,res){
+	/*Peoples.find({login:req.body.login, password: req.body.password},function(err,data){
+		console.log(data);
+		//res.send(req.user.login);
+	});*/
+	res.send(req.user.login);
 });
 
 app.listen(process.env.PORT||8080); // задаємо порт

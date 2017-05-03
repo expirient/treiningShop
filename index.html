@@ -19,28 +19,88 @@
 	<script src='module/category.js'></script>
 	<script src='module/order.js'></script>
 	<script src='module/admin.js'></script>
-	<!-- <script src='js/localization_Ukraine.js'></script> -->
 	<script src='module/main.js'></script>
+	<link rel="stylesheet" href="plagins/swiper.min.css">
+	<script src="plagins/swiper.js"></script>
+	<link rel="stylesheet" href="plagins/unslider.css">
+	<script src="plagins/unslider.js"></script>
 </head>
 <body ng-controller="mainCtrl">
 	
-	<div id="wrapper">
+	<div class="wrapper">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<div class="panel panel-primary" ng-controller="productCtrl">
+					<div class="panel-primary" ng-controller="productCtrl">
 						<div ng-controller="cartCtrl">
 							<div class="panel-heading myHeading">
-								{{headingView}}
-								<button ng-click="showProduct()" class="btn btn-info goToProducts" ng-hide="current.currentView == 'view/products.html'">Товари</button>
-								<!-- <button class="btn btn-info" ng-click="showAddProduct()" ng-hide="current.currentView == 'addProduct.html'"> Додати товар </button> -->
-								<button ng-click="showCart()" class="btn btn-info cartButton">
+								{{current.headingView}}
+								<button ng-click="showProduct()" class="btn btn-success goToProducts" ng-hide="current.currentView == 'view/products.html'">Товари</button>
+								<button ng-click="showCart()" class="btn btn-success cartButton" ng-hide="current.currentView == 'view/cart.html'">
 								<i class="fa fa-shopping-cart fa-lg"></i> Корзина <span class="badge" ng-show="cart.length > 0">{{cart.length}}</span></button>
+								<button ng-show="!isLogin" class="btn btn-success" ><i class="fa fa-sign-in" aria-hidden="true" ng-click="newLogin()"></i> Логуватись</button> 
+								<button class="btn btn-info" ng-click="showRegForm = ! showRegForm"><i class="fa fa-sign-in" aria-hidden="true"></i> Реєструватись</button>
 							</div>
-							<div class='searching_div'>
+							<div class="ForRegForm" ng-show="showRegForm">
+								<div class="container">
+									<div class="row">
+										<div class="col-md-12">
+											<form action="" class="regForm" name="regForm">
+												<input type="text" placeholder="Ваше Ім'я" required class="form-control" ng-model='newUser.name'>
+												<input type="text" class="form-control" placeholder="Логін на Сайті" required ng-model='newUser.login'>
+												<input type="text" class="form-control" placeholder="Телефон" ng-model='newUser.phone' required>
+												<input type="email" placeholder="Електронна Пошта" required class="form-control" ng-model='newUser.email'>
+												<input type="password" class="form-control" placeholder="Ваш Пароль" required ng-model='newUser.password'>
+												<input type="button" value="Зареєструватись" class="btn btn-success" ng-click="isNewUser(newUser)" ng-disabled="regForm.$invalid">
+												<input class="btn btn-warning" type="button" value="Відмінити" ng-click="showRegForm = ! showRegForm">
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="for-slider" ng-hide="current.currentView == 'view/cart.html'">
+								<div class="row">
+									<div class="col-md-4">
+										<div class="forLogForm" ng-show="isLogin">
+											<form action="" class="logForm" name="logForm">
+												<input type="text" class="form-control" placeholder="Логін на Сайті" required ng-model='logUser.login'>
+												<input type="password" class="form-control" placeholder="Ваш Пароль" required ng-model='logUser.password'>
+												<input type="button" value="Залогуватись" ng-click="isTrueLogin(logUser)" ng-disabled="logForm.$invalid" class="btn btn-success">
+											</form>
+										</div>
+									</div>
+									<div class="col-md-8">
+										<div class="top_slider">
+											<ul>
+												<li><img src="images/slide1.jpg" alt=""></li>
+												<li><img src="images/slide2.jpg" alt=""></li>
+												<li><img src="images/slide3.jpg" alt=""></li>
+												<li><img src="images/slide4.jpeg" alt=""></li>
+												<li><img src="images/slide5.jpg" alt=""></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- <div class='searching_div'>
 								<input type="text" placeholder="Пошук" ng-model='query' ng-show="current.currentView == 'view/products.html'">
+							</div> -->
+							<div class="sorting-searching" ng-hide="current.currentView == 'view/cart.html'">
+								<select name="Категорії" class="btn btn-success">
+									<option class="btn btn-warning">
+										Усі
+									</option>
+									<option class="btn btn-warning">
+										new
+									</option>
+									<option class="btn btn-warning">
+										second
+									</option>
+								</select>
+								
 							</div>
-							<div class="panel-body" ng-include="current.currentView" scope="" onload="">
+							<div class="panel-body my-panel-body" ng-include="current.currentView" scope="" onload="">
 							
 							</div>
 						</div>	
@@ -48,8 +108,30 @@
 				</div>
 			</div>
 		</div>
-		
 	</div> <!-- finish wrapper -->
-	
+	<script>
+	 $(document).ready(function () {
+    /*//initialize swiper when document ready  
+    var mySwiper = new Swiper ('.swiper-container1', {
+      // Optional parameters
+      loop: true,
+      autoplay: true,
+      speed: 2000,
+      effect: 'cube',
+      watchSlidesProgress: true,
+      autoplayDisableOnInteraction: false,
+      touchMoveStopPropagation: false,
+    }); */ 
+    $('.top_slider').unslider({
+		autoplay: true,
+		arrows:{
+			/*next: '<div class="next">></div>',
+			prev: '<div class="prev"><</div>'*/
+		},
+		delay: 5000,
+		speed: 1500
+	});      
+  });
+</script>
 </body>
 </html>

@@ -1,41 +1,157 @@
-#wrapper {
-  margin: 20px auto;
+/* ----------------------------------------------------------------------- */
+@font-face {
+  font-family: Zetta;
+  src: local("Zetta"), /* проверяем наличие шрифта в ОС пользователя */ url(../fonts/Zetta.ttf);
+  
+  /* имя шрифта для CSS правил */
+  /* если шрифт не установлен, тогда загружаем его по указанному пути */
 }
-#wrapper .myHeading {
+@font-face {
+  font-family: Rain;
+  src: local("Rain"), /* проверяем наличие шрифта в ОС пользователя */ url(../fonts/Rain.ttf);
+  
+  /* имя шрифта для CSS правил */
+  /* если шрифт не установлен, тогда загружаем его по указанному пути */
+}
+@font-face {
+  font-family: departament;
+  src: local("departament"), /* проверяем наличие шрифта в ОС пользователя */ url(../fonts/departament.ttf);
+  
+  /* имя шрифта для CSS правил */
+  /* если шрифт не установлен, тогда загружаем его по указанному пути */
+}
+@font-face {
+  font-family: Citrica;
+  src: local("Citrica"), /* проверяем наличие шрифта в ОС пользователя */ url(../fonts/Citrica.ttf);
+  
+  /* имя шрифта для CSS правил */
+  /* если шрифт не установлен, тогда загружаем его по указанному пути */
+}
+@font-face {
+  font-family: Toxic;
+  src: local("Toxic"), /* проверяем наличие шрифта в ОС пользователя */ url(../fonts/Toxic.ttf);
+  
+  /* имя шрифта для CSS правил */
+  /* если шрифт не установлен, тогда загружаем его по указанному пути */
+}
+@font-face {
+  font-family: Air;
+  src: local("Air"), /* проверяем наличие шрифта в ОС пользователя */ url(../fonts/Air.ttf);
+  
+  /* имя шрифта для CSS правил */
+  /* если шрифт не установлен, тогда загружаем его по указанному пути */
+}
+@font-face {
+  font-family: Peppers;
+  src: local("Peppers"), /* проверяем наличие шрифта в ОС пользователя */ url(../fonts/Peppers.ttf);
+  
+  /* имя шрифта для CSS правил */
+  /* если шрифт не установлен, тогда загружаем его по указанному пути */
+}
+/* ----------------------------------------------------------------------- */
+body {
+  background: #C4C9E1 !important;
+}
+.wrapper {
+  background: #777;
+  border-radius: 4px;
+  border: none;
+}
+.my-panel-body {
+  background: #C4C9E1;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+.myHeading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  font-family: Citrica;
+  font-size: 20px;
+  letter-spacing: 3px;
+  color: #fff;
+  background: rgba(22, 22, 22, 0.8);
+  border-radius: 4px;
   overflow: hidden;
 }
-#wrapper .myHeading .cartButton {
+.myHeading button {
+  font-family: Citrica;
+  letter-spacing: 2px;
+  width: 15%;
+  margin-left: 10px;
+  border: none;
   float: right;
   outline: none;
 }
-#wrapper .searching_div {
-  width: 50%;
-  margin: 10px 3% 0;
-}
-#wrapper .searching_div input[type='text'] {
-  width: 50%;
-  border-radius: 2px;
+.myHeading button i {
+  font-size: 16px;
   padding: 0 10px;
 }
-#wrapper .galery-block {
+.myHeading .adminHello span {
+  font: 20px Zetta;
+  color: red;
+  font-style: italic;
+}
+.myHeading .adminHello button {
+  float: none;
+}
+.panel-info {
+  font: 24px Citrica;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+.panel-info button {
+  letter-spacing: 3px;
+}
+.searching_div {
+  width: 50%;
+  margin: 15px 15px;
+}
+.searching_div input[type='text'] {
+  width: 50%;
+  border-radius: 4px;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+.galery-block {
+  padding: 5px 15px;
   position: relative;
 }
-#wrapper .galery-block img {
+.galery-block h4 {
+  font: 22px Peppers;
+  letter-spacing: 3px;
+}
+.galery-block p {
+  font-family: Zetta;
+}
+.galery-block h3 {
+  font: 28px Citrica;
+  color: #970013;
+  letter-spacing: 3px;
+}
+.galery-block img {
   float: right;
   padding: 0 0 0 10px;
-  width: 190px;
-  height: 120px;
+  width: 190px !important;
+  height: 120px !important;
   cursor: pointer;
-  transition: transform .3s;
 }
-#wrapper .galery-block img:hover {
-  transform: scale(1.2);
+.galery-block .forButton {
+  text-align: center;
 }
-#wrapper .galery-block button {
+.galery-block .forButton button {
+  font-family: Citrica;
+  letter-spacing: 2px;
+  font-weight: bold;
   outline: none;
   z-index: 999;
+  border: none;
+  width: 50%;
+  margin: 25px auto 5px;
 }
-#wrapper .galery-block .forShow {
+.galery-block .forShow {
   position: absolute;
   top: -10px;
   left: 0;
@@ -47,37 +163,53 @@
   color: #fff;
   overflow: auto;
 }
-#wrapper .for-pagination {
+.for-pagination {
   text-align: center;
 }
-#wrapper .for-pagination .active a {
+.for-pagination .active a {
   background: #333;
   color: #fff;
 }
-#wrapper .goToProducts {
+.goToProducts {
   outline: none;
   margin-left: 30px;
 }
-#wrapper .myTable .minus {
-  margin-left: 10px;
-  background: #E76857;
+.myTable {
+  margin-top: 100px;
+  font: 22px Citrica;
 }
-#wrapper .myTable .plus {
-  margin-right: 10px;
-  background: #05E763;
+.myTable .minus,
+.myTable .plus {
+  width: 30px;
+  margin: 0 10px;
 }
 td.descriptions {
   overflow: hidden;
 }
+.admin-product-table {
+  background: #fff;
+  text-align: center;
+}
+.admin-product-table th {
+  text-align: center;
+}
 .myNav {
-  background: #555;
+  background: #999;
   width: 100%;
+  border-radius: 4px;
 }
-.myNav li.active {
-  background: #444;
+.myNav li a {
   color: #fff;
+  transition: color .3s;
 }
-.myNav li.active a {
+.myNav li:hover a {
+  color: #000;
+}
+.myNav li .active {
+  color: #fff;
+  border-radius: 4px;
+}
+.myNav li .active a {
   background: #444;
 }
 .form-category form input[type='button'] {
@@ -85,6 +217,8 @@ td.descriptions {
   margin: 10px 0;
 }
 .form-category .categoryTable {
+  border-radius: 4px;
+  background: #fff;
   width: 100%;
   text-align: center;
 }
@@ -111,6 +245,9 @@ td.descriptions {
 }
 .for-phone .form-order h4 {
   color: #fff;
+}
+.tableOrders {
+  background: #fff;
 }
 .tableOrders th {
   background: lightblue;
@@ -148,11 +285,59 @@ td.descriptions {
 .adminForm #myForm input {
   margin-top: 5px;
 }
-.adminHello {
-  margin: 20px 0 10px;
+.ForRegForm {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(11, 11, 11, 0.8);
+  z-index: 9999;
+  text-align: center;
 }
-.adminHello span {
-  font: 20px Verdana;
-  color: red;
-  font-style: italic;
+.ForRegForm .regForm {
+  width: 30%;
+  margin: 25% auto;
+}
+.ForRegForm .regForm input {
+  font: 22px Citrica;
+  display: block;
+  margin-top: 5px;
+  width: 100%;
+}
+.forLogForm {
+  padding: 0;
+  margin: 0;
+}
+.forLogForm .logForm {
+  margin: 30% 0 0;
+}
+.forLogForm .logForm input,
+.forLogForm .logForm button {
+  font: 16px Citrica;
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+}
+.for-slider {
+  background: #444;
+  padding: 30px 15px;
+  margin: 70px auto 0;
+  border-radius: 4px;
+}
+.top_slider {
+  position: relative;
+  width: 100%;
+}
+.top_slider img {
+  max-width: 95%;
+  height: auto;
+}
+.sorting-searching {
+  margin: 5px auto;
+  text-align: center;
+}
+.sorting-searching select {
+  font: 16px Citrica;
+  width: 25%;
 }

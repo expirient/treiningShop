@@ -2,12 +2,29 @@
 
 /* Large Devices, Wide Screens */
 @media only screen and (max-width : 1200px) {
-
+	.myHeading button{
+		width: 30%;
+	}
 }
 
 /* Medium Devices, Desktops */
 @media only screen and (max-width : 992px) {
-
+	.forLogForm .logForm{
+		margin: 10% auto 0;
+	}
+	.forLogForm .logForm input,
+	.forLogForm .logForm button{
+		width: 50%;
+		margin: 5px auto;
+	}
+	.top_slider{
+		padding: 0;
+		margin: 10px 0;
+	}
+	.top_slider img{
+		max-width: 100%;
+		height: auto;
+	}
 }
 
 /* Small Devices, Tablets */

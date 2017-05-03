@@ -80,10 +80,14 @@ module.controller('cartCtrl', function($scope,$http){
 		};
 
 		$http.post('/addOrder',$scope.order).then(function(data){
-			alert('Замовлення успышно сформоване!');
 			$scope.cart = [];
 			$scope.showProduct();
+			alert('Замовлення успышно сформоване!');
 		});
+
+		
+
+
 	
 	}
 });

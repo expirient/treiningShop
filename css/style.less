@@ -1,41 +1,152 @@
 @persent: 100%;
 
+								//FONTS
+/* ----------------------------------------------------------------------- */
+@font-face {
+    font-family: Zetta; /* имя шрифта для CSS правил */
+    src: local("Zetta"), /* проверяем наличие шрифта в ОС пользователя */
+         url(../fonts/Zetta.ttf); /* если шрифт не установлен, тогда загружаем его по указанному пути */
+}
+@font-face {
+    font-family: Rain; /* имя шрифта для CSS правил */
+    src: local("Rain"), /* проверяем наличие шрифта в ОС пользователя */
+         url(../fonts/Rain.ttf); /* если шрифт не установлен, тогда загружаем его по указанному пути */
+}
+@font-face {
+    font-family: departament; /* имя шрифта для CSS правил */
+    src: local("departament"), /* проверяем наличие шрифта в ОС пользователя */
+         url(../fonts/departament.ttf); /* если шрифт не установлен, тогда загружаем его по указанному пути */
+}
+@font-face {
+    font-family: Citrica; /* имя шрифта для CSS правил */
+    src: local("Citrica"), /* проверяем наличие шрифта в ОС пользователя */
+         url(../fonts/Citrica.ttf); /* если шрифт не установлен, тогда загружаем его по указанному пути */
+}
+@font-face {
+    font-family: Toxic; /* имя шрифта для CSS правил */
+    src: local("Toxic"), /* проверяем наличие шрифта в ОС пользователя */
+         url(../fonts/Toxic.ttf); /* если шрифт не установлен, тогда загружаем его по указанному пути */
+}
+@font-face {
+    font-family:Air; /* имя шрифта для CSS правил */
+    src: local("Air"), /* проверяем наличие шрифта в ОС пользователя */
+         url(../fonts/Air.ttf); /* если шрифт не установлен, тогда загружаем его по указанному пути */
+}
+@font-face {
+    font-family:Peppers; /* имя шрифта для CSS правил */
+    src: local("Peppers"), /* проверяем наличие шрифта в ОС пользователя */
+         url(../fonts/Peppers.ttf); /* если шрифт не установлен, тогда загружаем его по указанному пути */
+}
+/* ----------------------------------------------------------------------- */
 
+body{
+	background: #C4C9E1 !important;
+}
 
-#wrapper{
-	margin: 20px auto;
+.wrapper{
+	background: #777;
+	border-radius: 4px;
+	border: none;
+	//margin: 2% 0;
+}
+	.my-panel-body{
+		background: #C4C9E1;
+		border-radius: 4px;
+		margin-bottom: 20px;
+	}
 	.myHeading{
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 999;
+		width: 100%;
+		font-family: Citrica;
+		font-size: 20px;
+		letter-spacing: 3px;
+		color: #fff;
+		background: rgba(22,22,22, 0.8);
+		border-radius: 4px;
 		overflow: hidden;
-		.cartButton{
+		button{
+			font-family: Citrica;
+			letter-spacing: 2px;
+			width: 15%;
+			margin-left: 10px;
+			border: none;
 			float: right;
 			outline: none;
+			i{
+				font-size: 16px;
+				padding: 0 10px;	
+			}
+		}
+		
+		.adminHello{
+			//margin: 20px 0 10px;
+			span{
+				font:20px Zetta;
+				color: red;
+				font-style: italic;
+			}
+			button{
+				float: none;
+				//position: absolute;
+			}
+		}
+	}
+	.panel-info{
+		font:24px Citrica;
+		letter-spacing: 3px;
+		font-weight: bold;
+		button{
+			letter-spacing: 3px;
 		}
 	}
 	.searching_div{
+		
 		width: 50%;
-		margin: 10px 3% 0;
+		margin: 15px 15px;
 		input[type='text']{
 			width: 50%;
-			border-radius: 2px;
+			border-radius: 4px;
 			padding: 0 10px;
+			margin: 0 auto;
 		}
 	}
 	.galery-block{
+		padding: 5px 15px;
 		position: relative;
+		h4{
+			font: 22px Peppers;
+			letter-spacing: 3px;
+		}
+		p{
+			font-family: Zetta;
+		}
+		h3{
+			font: 28px Citrica;
+			color: #970013;
+			letter-spacing: 3px;
+		}
 		img{
 			float: right;
 			padding: 0 0 0 10px;
-			width: 190px;
-			height: 120px;
-			cursor: pointer;
-			transition: transform .3s;
+			width: 190px !important;
+			height: 120px !important;
+			cursor: pointer;	
 		}
-		img:hover{
-			transform: scale(1.2);
-		}
-		button{
-			outline: none;
-			z-index: 999;
+		.forButton{
+			text-align: center;
+			button{
+				font-family: Citrica;
+				letter-spacing: 2px;
+				font-weight: bold;
+				outline: none;
+				z-index: 999;
+				border: none;
+				width: 50%;
+				margin: 25px auto 5px;
+			}
 		}
 		.forShow{
 			position: absolute;
@@ -62,25 +173,43 @@
 		margin-left: 30px;
 	}
 	.myTable{
-		.minus{
-			margin-left: 10px;
-			background: #E76857;
-		}
+		margin-top: 100px;
+		font: 22px Citrica;
+		.minus,
 		.plus{
-			margin-right: 10px;
-			background: #05E763;
-		}
+			width: 30px;
+			margin: 0 10px;
+		}	
 	}
-}
+
 td.descriptions{
 	overflow: hidden;
 }
+.admin-product-table{
+	background: #fff;
+	text-align: center;
+	th{
+		text-align: center;
+	}
+}
 .myNav{
-	background: #555;
+	background: #999;
 	width: 100%;
-		li.active {
-			background: #444;
+	border-radius: 4px;
+		li{ 
+			a{
+				color: #fff;
+				transition: color .3s;
+			}
+		}
+		li:hover{
+			a{
+				color: #000;
+			}
+		}
+		li .active {
 			color: #fff;
+			border-radius: 4px;
 			a{
 				background: #444;
 			}
@@ -96,7 +225,9 @@ td.descriptions{
 		}
 	}
 	.categoryTable{
-	width: 100%;
+		border-radius: 4px;
+		background: #fff;
+		width: 100%;
 		text-align: center;
 		.category-btn button{
 				width: 60%;
@@ -125,6 +256,7 @@ td.descriptions{
 	}
 }
 .tableOrders{
+	background: #fff;
 	th{
 		background: lightblue;
 		text-align: center;
@@ -167,13 +299,62 @@ td.descriptions{
 		}
 	}
 }
-
-.adminHello{
-	margin: 20px 0 10px;
-	span{
-		font:20px Verdana;
-		color: red;
-		font-style: italic;
+.ForRegForm{
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: rgba(11, 11, 11, 0.8);
+	z-index: 9999;
+	text-align: center;
+	.regForm{
+		width: 30%;
+		margin: 25% auto;
+		input{
+			font: 22px Citrica;
+			display: block;
+			margin-top: 5px;
+			width: 100%;
+		}
 	}
 }
+.forLogForm{
+	padding: 0;
+	margin: 0;
+	.logForm{
+		margin: 30% 0 0;
+		input,
+		button{
+			font: 16px Citrica;
+			display: block;
+			width: 100%;
+			margin-top: 5px;
+		}
+	}
+}
+.for-slider{
+	background: #444;
+	padding: 30px 15px;
+	margin: 70px auto 0;
+	border-radius: 4px;
+}
+.top_slider{
+	position: relative;
+	width: 100%;
+	img{
+		max-width: 95%;
+		height: auto;
+	}
+}
+.sorting-searching{
+	margin: 5px auto;
+	text-align: center;
+	select{
+		font: 16px Citrica;
+		width: 25%;
+
+	}
+}
+
 

@@ -22,7 +22,7 @@
 							<th>Кількість</th>
 							<th>Сума</th>
 							<th>Hа складі</th>
-							<th><button class="btn btn-danger btn-xs">Відмовити</button></th>
+							<th><button class="btn btn-danger btn-xs" ng-click="removeOrder(item)">Відмовити</button></th>
 						</tr>
 						
 							<tr ng-repeat="orders in item.order" class="tableForOrders">
@@ -32,7 +32,8 @@
 								<td class="td">{{orders.newcount}}</td>
 								<td class="td"><span>{{orders.newprice}}</span></td>
 								<td class="td">{{orders.count}}</td>
-								<td><button class="btn btn-success btn-xs">Виконати</button></td>
+								<td><button class="btn btn-success btn-xs" ng-click="doneOrder(orders)">Виконати</button>
+								<button class="btn btn-danger btn-xs" ng-click="removeItemInOrder(orders)">Відмовити</button></td>
 							</tr>
 						
 					</table>
