@@ -97,6 +97,36 @@ body {
 .myHeading .adminHello button {
   float: none;
 }
+.myHeading-admin {
+  font-family: Citrica;
+  font-size: 20px;
+  letter-spacing: 3px;
+  color: #fff;
+  background: rgba(22, 22, 22, 0.8);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.myHeading-admin button {
+  font-family: Citrica;
+  letter-spacing: 2px;
+  width: 15%;
+  margin-left: 10px;
+  border: none;
+  float: right;
+  outline: none;
+}
+.myHeading-admin button i {
+  font-size: 16px;
+  padding: 0 10px;
+}
+.myHeading-admin .adminHello span {
+  font: 20px Zetta;
+  color: red;
+  font-style: italic;
+}
+.myHeading-admin .adminHello button {
+  float: none;
+}
 .panel-info {
   font: 24px Citrica;
   letter-spacing: 3px;
