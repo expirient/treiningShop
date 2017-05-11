@@ -206,7 +206,7 @@ app.post('/addNewProduct', function(req,res){
 	});
 });
 app.post('/updateProduct', function(req,res){
-	//console.log(req.body);
+	console.log(req.body);
 	Products.update({_id: req.body._id},{$set:{
 		name: req.body.name,
 		model: req.body.model,

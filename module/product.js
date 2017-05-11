@@ -69,8 +69,8 @@ module.controller('productCtrl', function($scope,$http,$timeout){
 			category: $("#category option:selected").text(),
 			count: obj.count,
 			price: obj.price,
-			description: obj.description,
-			path: obj.path
+			path: obj.path,
+			description: obj.description
 		}
 		//console.log(newProduct);
 		$http.post('/addNewProduct',newProduct).then(function(data){
@@ -85,14 +85,16 @@ module.controller('productCtrl', function($scope,$http,$timeout){
 	}
 	$scope.updateProduct = function(obj){
 		var updateProduct = {
+			_id: obj._id,
 			name: obj.name,
 			model: obj.model,
 			category: $("#category option:selected").text(),
 			count: obj.count,
 			price: obj.price,
-			description: obj.description,
-			path: obj.path
+			path: obj.path,
+			description: obj.description
 		}
+		console.log(updateProduct);
 		$http.post('/updateProduct',updateProduct).then(function(data){
 			//console.log(data);
 			if ($scope.current.currentView == 'view/curt.html') {
