@@ -25,7 +25,7 @@ var module = angular.module('productApp',[]);
 		return function(scope,element,attributes){
 			element.on('load',function(e){
 				var path = e.target.contentDocument.body.innerHTML;
-				console.log(path);
+				//console.log(path);
 				//scope.newp.path = path;
 				scope.$apply(function(){
 					scope.newp.path = path;
@@ -34,17 +34,46 @@ var module = angular.module('productApp',[]);
 		}
 	});
 
-module.controller('productCtrl', function($scope,$http){
+module.controller('productCtrl', function($scope,$http,$timeout){
 	$scope.products = [];
 
 	$scope.sendData = function(){
 		$scope.$broadcast('products',{products: $scope.products});
 	}
 
+	/*$timeout(function(){
+		$http.get('/loadCategory').then(function(data){
+			$scope.categoryObj = data.data;
+			$scope.selectCategory = $scope.categoryObj[0].name
+
+			for(var i = 0; i < $scope.categoryObj.length; i++){
+				$scope.categoryObj[i].value = $scope.categoryObj[i].name;
+			}
+			var first = {
+					name: "Усі товари",
+					value:""
+				}
+				$scope.categoryObj.unshift(first);
+		});
+		$scope.selectCategory = {
+			name: $scope.first.name
+		}
+		console.log($scope.selectCategory);
+	},0);*/
+
 	$scope.addProduct = function(obj){
-		$http.post('/addNewProduct',obj).then(function(data){
-			/*$scope.current.currentView = 'view/products.html';
-			$scope.current.headingView = 'Товари магазину: ';*/
+		console.log(obj);
+		var newProduct = {
+			name: obj.name,
+			model: obj.model,
+			category: $("#category option:selected").text(),
+			count: obj.count,
+			price: obj.price,
+			description: obj.description,
+			path: obj.path
+		}
+		//console.log(newProduct);
+		$http.post('/addNewProduct',newProduct).then(function(data){
 			$scope.showAdminProducts();
 			if(data.data == ''){
 				return;
@@ -52,9 +81,19 @@ module.controller('productCtrl', function($scope,$http){
 			$scope.products.push(data.data);
 			$scope.newp = {};
 		});
+		//console.log(obj.category);
 	}
 	$scope.updateProduct = function(obj){
-		$http.post('/updateProduct',obj).then(function(data){
+		var updateProduct = {
+			name: obj.name,
+			model: obj.model,
+			category: $("#category option:selected").text(),
+			count: obj.count,
+			price: obj.price,
+			description: obj.description,
+			path: obj.path
+		}
+		$http.post('/updateProduct',updateProduct).then(function(data){
 			//console.log(data);
 			if ($scope.current.currentView == 'view/curt.html') {
 				return;
@@ -69,13 +108,21 @@ module.controller('productCtrl', function($scope,$http){
 			$scope.getProducts();
 		});
 	}
-	$scope.getProducts = function(){
+	$scope.getProducts = function(obj){
+		console.log(obj);
+		$http.post('/load',obj).then(function(data){
+			$scope.products = data.data;
+			$scope.sendData();
+		});
+	}
+	
+	/*$scope.getProducts = function(){
 		$http.get('/load').then(function(data){
 			//console.log(data.data);
 			$scope.products = data.data;
 			$scope.sendData();
 		});
-	}
+	}*/
 	$scope.editOrAdd = function(obj){
 		$scope.newp = obj ? obj : {};
 		$scope.showAddProduct()
@@ -88,5 +135,48 @@ module.controller('productCtrl', function($scope,$http){
 			$scope.addProduct(obj);
 		}
 	}
+
+	/*$scope.myCategory = function(){
+		$http.get('/loadCategory').then(function(data){
+			$scope.categoryObj = data.data;
+			$scope.selectCategory = $scope.categoryObj[0].name
+
+			for(var i = 0; i < $scope.categoryObj.length; i++){
+				$scope.categoryObj[i].value = $scope.categoryObj[i].name;
+			}
+			var first = {
+					name: "Усі товари",
+					value:""
+				}
+				$scope.categoryObj.unshift(first);
+		});
+			
+	}*/
+
+	$scope.selectProduct = function(obj){
+		//console.log(obj);
+		var redirectCategory = {
+			value: $("#my_select option:selected").text()
+		}
+		if (redirectCategory.value == 'Усі товари') {
+			redirectCategory = {};
+		}
+		//console.log(test);
+		/*var newStr = $.trim(str);
+		//console.log(newStr);
+
+		var obj = {
+			category: newStr
+		}
+		if (obj.category == 'Усі') {
+			obj = {};
+		}
+		//$scope.myC = obj;*/
+				//$scope.selectCategory = obj;
+				//$scope.getProducts($scope.selectCategory);
+		$scope.getProducts(redirectCategory);
+	}
+	
+	//$scope.myCategory();
 	$scope.getProducts();
 });	

@@ -52,7 +52,7 @@ body{
 	.my-panel-body{
 		background: #C4C9E1;
 		border-radius: 4px;
-		margin-bottom: 20px;
+		//margin-bottom: 10px;
 	}
 	.myHeading{
 		position: fixed;
@@ -102,6 +102,7 @@ body{
 		background: rgba(22,22,22, 0.8);
 		border-radius: 4px;
 		overflow: hidden;
+		position: relative;
 		button{
 			font-family: Citrica;
 			letter-spacing: 2px;
@@ -113,6 +114,18 @@ body{
 			i{
 				font-size: 16px;
 				padding: 0 10px;	
+			}
+		}
+		.routingAll{
+			position: absolute;
+			bottom: 0;
+			right: 20px;
+			font: 16px Verdana;
+			a{
+				color: #fff;
+			}
+			i,span{
+				color: #999;
 			}
 		}
 		
@@ -208,7 +221,7 @@ body{
 		margin-left: 30px;
 	}
 	.myTable{
-		margin-top: 100px;
+		margin-top: 20px;
 		font: 22px Citrica;
 		.minus,
 		.plus{
@@ -364,7 +377,7 @@ td.descriptions{
 			font: 16px Citrica;
 			display: block;
 			width: 100%;
-			margin-top: 5px;
+			margin-top: 5px;  
 		}
 	}
 }
@@ -383,13 +396,57 @@ td.descriptions{
 	}
 }
 .sorting-searching{
-	margin: 5px auto;
-	text-align: center;
+	margin: 5px;
+	//text-align: center;
+	span{
+		font: 16px Citrica;
+		font-weight: bold;
+		letter-spacing: 3px;
+		color: #fff;
+		text-shadow: -1px 1px 1px #000;
+		margin-left: 30px;
+	}
 	select{
 		font: 16px Citrica;
-		width: 25%;
+		width: 45%;
+		font-weight: bold;
+		letter-spacing: 3px;
+		text-align: center;
+		option{
+			font-size: 20px;
+		}
+	/* 	option:first-child{
+		display: none;
+	} */
+	}
 
+}
+.first-footer{
+	height: 60px;
+	background: #444;
+	border-radius: 4px;
+	margin-top: 5px;
+}
+.select-category{
+	/* option:first-child{
+		display: none;
+	} */
+}
+.routing{
+	float: right;
+	font: 16px Verdana;
+	margin: 7px 20px 0 0;
+	a{
+		color: #fff;
 	}
 }
+.routingCart{
+	margin-top: 50px;
+	font: 16px Verdana;
+	a{
+		color: #fff;
+	}
+}
+
 
 

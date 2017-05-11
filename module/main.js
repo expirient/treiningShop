@@ -3,12 +3,18 @@ module.controller('mainCtrl', function($scope,$http){
 	/*$scope.currentView = 'view/products.html';*/
 	$scope.current = {
 		currentView: 'view/products.html',
-		headingView: 'Товари магазину:'
+		headingView: 'Товари магазину:',
+		routing: ' Головна '
+	}
+
+	$scope.reload = function(){
+		window.location.reload();
 	}
 	//$scope.headingView = 'Товари магазину:';
 	$scope.showCart = function(){
 		$scope.current.currentView = 'view/cart.html';
 		$scope.current.headingView = 'Корзина: ';
+		$scope.current.routingCart = ' Корзина';
 	};
 	$scope.showProduct = function(){
 		$scope.current.currentView = 'view/products.html';
@@ -17,6 +23,7 @@ module.controller('mainCtrl', function($scope,$http){
 	$scope.showAddProduct = function(){
 		$scope.current.headingView = 'Додавання товару: ';
 		$scope.current.currentView = 'viewAdmin/addProduct.html';
+		$scope.current.routingAddProduct = ' Додавання Товару';
 	};
 	$scope.showAdminProducts = function(){
 		$scope.current.headingView = 'Адміністрування: ';
@@ -25,11 +32,21 @@ module.controller('mainCtrl', function($scope,$http){
 	$scope.showAdminCategory = function(){
 		$scope.current.headingView = 'Адміністрування категорій: ';
 		$scope.current.currentView = 'viewAdmin/adminCategory.html';
+		$scope.current.routingCategory = ' Категорії'
 	};
 	$scope.showAdminOrders = function(){
 		$scope.current.headingView = 'Замовлення: ';
 		$scope.current.currentView = 'viewAdmin/order.html';
+		$scope.current.routingOrder = ' Замовлення';
 	}
+
+	/*$scope.$on('categorys',function(event,args){
+		$scope.viewCategorys = args.categorys;
+		
+	});
+
+	console.log($scope.viewCategorys);
+	console.log($scope.categorys);*/
 
 
 	$scope.isLogin = true;

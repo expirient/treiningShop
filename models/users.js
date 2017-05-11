@@ -9,6 +9,10 @@ var schemaPeoples = new mongoose.Schema({
 		type: String,
 		require: true
 	},
+	phone: {
+		type: Number,
+		require: true
+	},
 	email: {
 		type: String,
 		require: true

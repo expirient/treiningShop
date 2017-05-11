@@ -2,7 +2,7 @@ var module = angular.module('cartApp',[]);
 
 module.controller('cartCtrl', function($scope,$http){
 	$scope.cart = [];
-	
+
 	$scope.addProductCart = function(obj){
 		var pos = $scope.cart.indexOf(obj);
 		if(pos == -1){
@@ -84,10 +84,6 @@ module.controller('cartCtrl', function($scope,$http){
 			$scope.showProduct();
 			alert('Замовлення успышно сформоване!');
 		});
-
-		
-
-
 	
 	}
 });

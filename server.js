@@ -128,12 +128,42 @@ var localStrategy = require('passport-local').Strategy // підключаємо
 
 
 
-app.get('/load',function(req,res){
+app.post('/load',function(req,res){
+	//console.log(req.body.value);
+	if (req.body.value == '' || req.body.value == undefined) {
+		Products.find(function(err,data){
+			res.send(data);
+		});
+	}
+	else{
+		Products.find({category: req.body.value},function(err,data){
+			res.send(data);
+		});
+	}
+	/*if (req.body.category == undefined) {
+		Products.find(function(err,data){
+			res.send(data);
+		});
+	}
+	else if (req.body.category !== undefined) {
+		//console.log(req.body.category);
+		Products.find({category: req.body.category},function(err,data){
+			res.send(data);
+		});
+	}*/
+});
+/*app.get('/load',function(req,res){
 	Products.find(function(err,data){
 		res.send(data);
 	});
-});
+})*/
+
 app.get('/loadCategory',function(req,res){
+	Category.find(function(err,data){
+		res.send(data);
+	});
+});
+app.get('/adminLoadCategory',function(req,res){
 	Category.find(function(err,data){
 		res.send(data);
 	});
@@ -153,7 +183,7 @@ app.post('/deleteCategory',function(req,res){
 	})
 });
 app.post('/updateCategory',function(req,res){
-	console.log(req.body);
+	//console.log(req.body);
 	Category.update({_id: req.body._id},{$set:{name: req.body.name}},function(err,data){
 		console.log(data);
 		res.send(data);

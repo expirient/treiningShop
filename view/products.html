@@ -1,6 +1,6 @@
 
 <div ng-controller="paginationCtrl">
-	<div class="col-md-6" ng-repeat="item in items | filter:query" >
+	<div class="col-md-6" ng-repeat="item in items|filter:{category:selectCategory.value}" >
 		<div class="thumbnail galery-block">
 			<img src="{{item.path}}" alt="Foto is not found" ng-click="showDescription = ! showDescription" title="Детальна інформація">
 			<h4>{{item.name}} {{item.model}}</h4>

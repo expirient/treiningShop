@@ -35,7 +35,14 @@
 								<button class="btn btn-success" ng-click="showAddProduct()" ng-hide="current.currentView == 'viewAdmin/addProduct.html'"> Додати товар </button>
 								<button class="btn btn-success" ng-click="showAdminOrders()" ng-hide="current.currentView == 'viewAdmin/order.html'"> Замовлення </button>
 								<button class="btn btn-success" ng-click="showAdminProducts()" ng-hide="current.currentView == 'viewAdmin/adminProducts.html'"> Повернутись</button>
-								
+								<div class="routingAll">
+									<p>
+									<i class="fa fa-angle-double-right" aria-hidden="true"></i><a href="#" ng-click="showAdminProducts()">{{current.routing}}</a><i class="fa fa-angle-double-right" aria-hidden="true" ng-show="current.currentView == 'viewAdmin/addProduct.html'">
+									</i><span ng-show="current.currentView == 'viewAdmin/addProduct.html'">{{current.routingAddProduct}}</span>
+									<i class="fa fa-angle-double-right" aria-hidden="true" ng-show="current.currentView == 'viewAdmin/order.html'"></i><span ng-show="current.currentView == 'viewAdmin/order.html'">{{current.routingOrder}}</span>
+									<i class="fa fa-angle-double-right" aria-hidden="true" ng-show="current.currentView == 'viewAdmin/adminCategory.html'"></i><span ng-show="current.currentView == 'viewAdmin/adminCategory.html'">{{current.routingCategory}}</span>
+									</p>
+								</div>
 								<div class="adminHello" ng-controller="userCtrl">
 									<h5>Вітаємо на сайті: <span>  {{username | uppercase}}.</span></h5>
 									<button class="btn btn-danger btn-xs logout" ng-click="logout()">Розлогуватись</button>
@@ -50,7 +57,7 @@
 									  <li role="presentation" ng-class="{active: current.currentView == 'viewAdmin/adminProducts.html'}"><a href="#" ng-click="showAdminProducts()">Товари</a></li>
 									  <li role="presentation" ng-class="{active: current.currentView == 'viewAdmin/adminCategory.html'}"><a href="#" ng-click="showAdminCategory()">Категорії</a></li>
 									  <li role="presentation" ng-class="{active: current.currentView == 'viewAdmin/order.html'}"><a href="#" ng-click="showAdminOrders()">Замовлення</a></li>
-									  <li role="presentation"><a href="#">Коментарі</a></li>
+									 <!--  <li role="presentation"><a href="#">Коментарі</a></li> -->
 									</ul>
 								</div>
 								<div class="col-md-10" ng-include="current.currentView" scope="" onload="">
@@ -62,7 +69,6 @@
 				</div>
 			</div>
 		</div>
-		
 	<!-- </div> --> <!-- finish wrapper -->
 	
 </body>
