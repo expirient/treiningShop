@@ -1,0 +1,48 @@
+<div ng-controller="usersCtrl">
+	<div class="row" ng-controller="orderCtrl">
+		<div class="personalRoom">
+			<div class="col-md-2">
+				<aside>
+					<div class="forPhoto">
+						<img src="{{facebookUser.photos}}" alt="" title="Натисніть щоб змінити фото!" 
+						ng-click="showPhotoEdit = ! showPhotoEdit">
+					</div>
+					<h4>{{facebookUser.name}}</h4>
+					<h5>{{facebookUser.email}}</h5>
+					<button class="btn btn-danger btn-xs logout" ng-click="logoutFacebookUser()">Розлогуватись</button>
+				</aside>
+			</div>
+			<div class="changePhoto thumbnail" ng-show="showPhotoEdit">
+				<img src="{{facebookUser.photos}}" alt="Photo is not found">
+					<form method="POST" action="/uploadPhoto" enctype="multipart/form-data" target="Newresult" class="formForInputFile">
+						<!-- <input type="text" ng-model="newPhoto.path"  class="form-control" placeholder="Path"> -->
+				       <input type="file" name="pht">
+				       <input type="submit" class="btn btn-success" value="Завантажити">
+				    </form>
+			      <iframe name="Newresult"  newsend-data></iframe>
+			      <input type="submit" class="btn btn-success"
+			      ng-click="saveNewPhoto(newPhoto,this,$event)" value="Змінити">
+			      <input type="button" class="btn btn-warning" value="Відмінити" ng-click="showPhotoEdit = ! showPhotoEdit">
+
+			</div>
+			<div class="col-md-10">
+				<table class="table table-striped table-bordered">
+					<tr>
+						<th>Дата</th>
+						<th>Назва</th>
+						<th>Кількість</th>
+						<th>Сума</th>
+						<th>Статус</th>
+					</tr>
+					<tr ng-repeat="item in facebookUser.orders | orderBy: facebookUser.orders.date">
+						<td>{{item.date}}</td>
+						<td>{{item.name }}<span>{{ item.model}}</span></td>
+						<td>{{item.newcount}}</td>
+						<td><span>{{item.newprice}}</span></td>
+						<td ng-model="item.isItDone" style = {{changeColor(item.isItDone)}}>{{changeText(item.isItDone)}}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>	

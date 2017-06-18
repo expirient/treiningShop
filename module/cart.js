@@ -8,7 +8,7 @@ module.controller('cartCtrl', function($scope,$http){
 		if(pos == -1){
 			obj.newcount = 1;
 			obj.newprice = obj.price;
-			$scope.cart.push(obj);
+			$scope.cart.unshift(obj);
 			return;
 		}
 		alert('Цей товар вже є у корзині.');
@@ -44,13 +44,14 @@ module.controller('cartCtrl', function($scope,$http){
 		return total;
 	}
 
+	$scope.clearCart = function(){
+		$scope.cart = [];
+	}
 
-	$scope.sendOrder = function(obj){
-		var date = new Date();
+	/*var date = new Date();
 		//var today = $filter('date')(date, 'dd.MM.yyyy HH:mm:ss');
 
 		var options = {
-		  era: 'long',
 		  year: 'numeric',
 		  month: 'long',
 		  day: 'numeric',
@@ -60,8 +61,10 @@ module.controller('cartCtrl', function($scope,$http){
 		  minute: 'numeric',
 		  second: 'numeric'
 		};
-		var newDate = date.toLocaleString('uk',options);
-		//console.log(newDate);
+		$scope.newDate = date.toLocaleString('uk',options);
+
+	$scope.sendOrder = function(obj){
+		
 		$scope.order = obj;
 		//console.log($scope.cart[0].count);
 		
@@ -70,9 +73,9 @@ module.controller('cartCtrl', function($scope,$http){
 			$scope.updateProduct($scope.cart[i]);
 		}
 		
-
+		
 		$scope.order = {
-			date: newDate,
+			date: $scope.newDate,
 			client: 'Guest',
 			phone: obj.phone,
 			order: $scope.cart
@@ -81,9 +84,11 @@ module.controller('cartCtrl', function($scope,$http){
 
 		$http.post('/addOrder',$scope.order).then(function(data){
 			$scope.cart = [];
+			$scope.order = {};
 			$scope.showProduct();
-			alert('Замовлення успышно сформоване!');
+			alert('Замовлення успішно сформоване!');
+			window.location.reload();
 		});
 	
-	}
+	}*/
 });

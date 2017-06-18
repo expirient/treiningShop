@@ -32,7 +32,7 @@
 }
 .unslider ol li:hover{
 	border:1px solid #555;
-	background: rgba(22,22,22, 1);
+	background: #fff;
 }
 .unslider ol{
 	position: absolute;
@@ -48,4 +48,35 @@
 	bottom: 2%;
 	left: 43%;
 }
-
+@media only screen and (max-width : 600px) {
+	.unslider ol{
+		position: absolute;
+		bottom: 6%;
+		left: 42%;
+		z-index: 999;
+	}
+}
+@media only screen and (max-width : 460px) {
+	.unslider ol{
+		position: absolute;
+		bottom: 6%;
+		left: 40%;
+		z-index: 999;
+	}
+	.bottom_carusel .unslider ol li{
+		height: 7px;
+		width: 7px;
+	}
+}
+@media only screen and (max-width : 340px) {
+	.unslider ol{
+		position: absolute;
+		bottom: 6%;
+		left: 32%;
+		z-index: 999;
+	}
+	.bottom_carusel .unslider ol li{
+		height: 4px;
+		width: 4px;
+	}
+}

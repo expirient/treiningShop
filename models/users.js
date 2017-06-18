@@ -20,6 +20,12 @@ var schemaPeoples = new mongoose.Schema({
 	password: {
 		type: String,
 		require: true
+	},
+	orders: {
+		type: Array
+	},
+	messages:{
+		type:Array
 	}
 });
 

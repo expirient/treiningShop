@@ -1,0 +1,17 @@
+<div class="single-product" ng-repeat="item in singleItem">
+	<div class="clearfix">
+		<img src="{{item.path}}" alt="">
+		<div class="forName">
+			<h4>Назва та модель:</h4>
+		</div>
+		<h1>{{item.name }} <span> {{ item.model}}</span></h1>
+		<h3>{{item.price}} грн.</h3>
+	</div>
+	<div>
+		<h4>Опис товару:</h4>
+		<h5>{{item.description}}</h5>
+		<button class="btn btn-success" ng-click="addProductCart(item)">
+			<i class="fa fa-shopping-cart fa-lg"></i> Купити
+		</button>
+	</div>
+</div>

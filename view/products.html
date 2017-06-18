@@ -2,21 +2,22 @@
 <div ng-controller="paginationCtrl">
 	<div class="col-md-6" ng-repeat="item in items|filter:{category:selectCategory.value}" >
 		<div class="thumbnail galery-block">
-			<img src="{{item.path}}" alt="Foto is not found" ng-click="showDescription = ! showDescription" title="Детальна інформація">
+			<img src="{{item.path}}" alt="Foto is not found" 
+			ng-click="showSingleProduct(this)" title="Детальна інформація">
 			<h4>{{item.name}} {{item.model}}</h4>
 			<p>{{item.category}}</p>
-			<h3>{{item.price | number}} грн.</h3>
+			<h3>{{item.price}} грн.</h3>
 			<div class="forButton">
 				<button class="btn btn-success" ng-click="addProductCart(item)">
 				<i class="fa fa-shopping-cart fa-lg"></i> Купити
 				</button>
 			</div>
-			<h5 class="forShow" ng-show="showDescription" ng-click="showDescription = ! showDescription">{{item.description}}</h5>
+			<h5 class="forShow" ng-show="showDescription">{{item.description}}</h5>
 		</div>
 	</div>
-	<div class="container for-pagination">
-		<div class="row">
-			<div class="col-md-12">
+	<div class="for-pagination">
+		<!-- <div class="row">
+			<div class="col-md-12"> -->
 				<ul class="pagination" ng-if="obj.pages.length">
 				    
 				    <li ng-class="{disabled: obj.currentPage == 1}"><a href="#" ng-click="setPage(1)">Перша</a></li>
@@ -30,7 +31,7 @@
 					<li ng-class="{disabled: obj.currentPage == obj.totalPage}"><a href="#" ng-click="setPage(obj.totalPage)">Остання</a></li>
 				   
 				</ul>
-			</div>
-		</div>
+		<!-- 	</div>
+				</div> -->
 	</div>			
 </div>	

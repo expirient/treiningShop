@@ -1,11 +1,14 @@
-var module = angular.module('mainApp',['productApp','cartApp','paginationApp','categoryApp','orderApp','usersApp']);
+var module = angular.module('mainApp',['productApp','cartApp','paginationApp','categoryApp','orderApp','usersApp','adminApp']);
 module.controller('mainCtrl', function($scope,$http){
 	/*$scope.currentView = 'view/products.html';*/
 	$scope.current = {
 		currentView: 'view/products.html',
+		adminCurrentView: 'viewAdmin/adminProducts',
 		headingView: 'Товари магазину:',
 		routing: ' Головна '
 	}
+
+	$scope.showMenu = true;
 
 	$scope.reload = function(){
 		window.location.reload();
@@ -22,57 +25,57 @@ module.controller('mainCtrl', function($scope,$http){
 	};
 	$scope.showAddProduct = function(){
 		$scope.current.headingView = 'Додавання товару: ';
-		$scope.current.currentView = 'viewAdmin/addProduct.html';
+		$scope.current.adminCurrentView = 'viewAdmin/addProduct.html';
 		$scope.current.routingAddProduct = ' Додавання Товару';
 	};
 	$scope.showAdminProducts = function(){
 		$scope.current.headingView = 'Адміністрування: ';
-		$scope.current.currentView = 'viewAdmin/adminProducts.html';
+		$scope.current.adminCurrentView = 'viewAdmin/adminProducts.html';
 	}
 	$scope.showAdminCategory = function(){
 		$scope.current.headingView = 'Адміністрування категорій: ';
-		$scope.current.currentView = 'viewAdmin/adminCategory.html';
+		$scope.current.adminCurrentView = 'viewAdmin/adminCategory.html';
 		$scope.current.routingCategory = ' Категорії'
 	};
 	$scope.showAdminOrders = function(){
 		$scope.current.headingView = 'Замовлення: ';
-		$scope.current.currentView = 'viewAdmin/order.html';
+		$scope.current.adminCurrentView = 'viewAdmin/order.html';
 		$scope.current.routingOrder = ' Замовлення';
 	}
 
-	/*$scope.$on('categorys',function(event,args){
-		$scope.viewCategorys = args.categorys;
-		
-	});
+	$scope.showSingleProduct = function(obj){
+		$scope.current.currentView = 'view/productView.html'
+		$scope.singleItem = obj;
+		$('html,body').animate({
+			scrollTop:700},1000);
+		return;
+	}
+	$scope.showPersonalRoom = function(){
+		$scope.current.currentView = 'view/personalRoom.html';
+		$scope.current.headingView = 'Особистий кабінет: ';
+	}
+	$scope.showAllUsers = function(){
+		$scope.current.adminCurrentView = 'viewAdmin/users.html'
+	}
+	$scope.showAboutProject = function(){
+		$scope.current.currentView = 'view/aboutProject.html';
+		$scope.current.headingView = 'Про Проект: ';
+	}
 
-	console.log($scope.viewCategorys);
-	console.log($scope.categorys);*/
-
+	$scope.showOrHideMenu = function(){
+		$('.menu').slideToggle(400);
+	}
 
 	$scope.isLogin = true;
 	$scope.isTrueLogin = function(obj){
-		//console.log(obj);
+		
 		$http.get('/isTrueLogin').then(function(data){
-			/*if (data.data == '') {
-				return;
-			}
-			else{
-				$scope.logUser = {};
-				$scope.isLogin = false;
-				//$scope.successLogin();
-				$scope.loginUser = data.data;
-			}*/
+			
 		});
 	}
-	//$scope.isTrueLogin();
-
-
-	/*$scope.successLogin = function(){
-		$http.get('/successLogin').then(function(data){
-			$scope.loginUser = data.data;
-		});
-	}*/
+	
 	$scope.newLogin = function(){
 		$scope.isLogin = true;
 	}
+	
 });	

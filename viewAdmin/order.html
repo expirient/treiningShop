@@ -1,18 +1,20 @@
-<div ng-controller="orderCtrl">
+<!-- <div ng-controller="orderCtrl"> -->
 	<table class="table table-bordered tableOrders">
 		<thead>
 			<tr>
 				<th>Дата Замовлення</th>
 				<th>Клієнт</th>
-				<th>Телефон</th>
+				<th>Телефон / Ел. адреса</th>
+				<!-- <th></th> -->
 				<th>Замовлення</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="item in newOrders | orderBy: item.date">
+			<tr ng-repeat="item in filterOrders | orderBy: sortparam">
 				<td>{{item.date}}</td>
 				<td>{{item.client}}</td>
-				<td>{{item.phone}}</td>
+				<td>{{item.phone}}<br>{{item.email}}</td>
+				<!-- <td></td> -->
 				<td>
 					<table  class="tableForOrders table table-bordered">
 						<tr>
@@ -22,18 +24,23 @@
 							<th>Кількість</th>
 							<th>Сума</th>
 							<th>Hа складі</th>
-							<th><button class="btn btn-danger btn-xs" ng-click="removeOrder(item)">Відмовити</button></th>
+							<th><button class="btn btn-danger btn-xs" ng-click="removeOrder(item)">Видалити</button></th>
 						</tr>
 						
 							<tr ng-repeat="orders in item.order" class="tableForOrders">
-								<td class="td"">{{orders.name}}</td>
-								<td class="td">{{orders.model}}</td>
-								<td class="td" >{{orders.category}}</td>
-								<td class="td">{{orders.newcount}}</td>
-								<td class="td"><span>{{orders.newprice}}</span></td>
-								<td class="td">{{orders.count}}</td>
-								<td><button class="btn btn-success btn-xs" ng-click="doneOrder(orders)">Виконати</button>
-								<button class="btn btn-danger btn-xs" ng-click="removeItemInOrder(orders)">Відмовити</button></td>
+								<td class="td" ng-class="{primaryTd:orders.isItDone == true}">{{orders.name}}</td>
+								<td class="td" ng-class="{primaryTd:orders.isItDone == true}">{{orders.model}}</td>
+								<td class="td" ng-class="{primaryTd:orders.isItDone == true}">{{orders.category}}</td>
+								<td class="td" ng-class="{primaryTd:orders.isItDone == true}">{{orders.newcount}}</td>
+								<td class="td" ng-class="{primaryTd:orders.isItDone == true}"><span>{{orders.newprice}}</span></td>
+								<td class="td" ng-class="{primaryTd:orders.isItDone == true}">{{orders.count}}</td>
+								<td ng-class="{primaryTd:orders.isItDone == true}"><button class="btn btn-success btn-xs" 
+								ng-click="doneOrder(orders,$event,item)"
+								ng-disabled="orders.isItDone == true"
+								ng-class="{primary:orders.isItDone == true}">Виконати</button>
+								<button class="btn btn-danger btn-xs" ng-click="removeItemInOrder(orders)"
+								ng-class="{primary:orders.isItDone == true}"
+								ng-disabled="orders.isItDone == true">Відмовити</button></td>
 							</tr>
 						
 					</table>
@@ -41,4 +48,4 @@
 			</tr>
 		</tbody>
 	</table>
-</div>
+<!-- </div> -->

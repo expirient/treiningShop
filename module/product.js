@@ -41,6 +41,11 @@ module.controller('productCtrl', function($scope,$http,$timeout){
 		$scope.$broadcast('products',{products: $scope.products});
 	}
 
+	$scope.$on('selectCategory',function(event,args){
+		$scope.forSendCategory = args.selectCategory;
+	});	
+	
+
 	/*$timeout(function(){
 		$http.get('/loadCategory').then(function(data){
 			$scope.categoryObj = data.data;
@@ -60,9 +65,9 @@ module.controller('productCtrl', function($scope,$http,$timeout){
 		}
 		console.log($scope.selectCategory);
 	},0);*/
-
+	
 	$scope.addProduct = function(obj){
-		console.log(obj);
+		//console.log(obj);
 		var newProduct = {
 			name: obj.name,
 			model: obj.model,
@@ -88,20 +93,22 @@ module.controller('productCtrl', function($scope,$http,$timeout){
 			_id: obj._id,
 			name: obj.name,
 			model: obj.model,
-			category: $("#category option:selected").text(),
+			category: $("#category option:selected").text() || obj.category,
 			count: obj.count,
 			price: obj.price,
 			path: obj.path,
 			description: obj.description
 		}
-		console.log(updateProduct);
+		//console.log(updateProduct);
 		$http.post('/updateProduct',updateProduct).then(function(data){
 			//console.log(data);
 			if ($scope.current.currentView == 'view/curt.html') {
 				return;
 			}
+			$scope.getProducts();
 			$scope.showAdminProducts();
 			$scope.newp = {};
+			//window.location.reload();
 		});
 	}
 	$scope.deleteProduct = function(obj){
@@ -111,20 +118,25 @@ module.controller('productCtrl', function($scope,$http,$timeout){
 		});
 	}
 	$scope.getProducts = function(obj){
-		console.log(obj);
+		//console.log($scope.forSendCategory);
+		if ($("#my_select option:selected").text() !== 'Усі товари' && obj !== undefined && obj.category == undefined) {
+			obj = {
+				name: obj.name,
+				category: $("#my_select option:selected").text()
+			}
+			$scope.hideLi(obj.name);
+		}
+		
+		if ( obj !== undefined && obj.category == undefined) {
+			$scope.hideLi(obj.name);
+		}
 		$http.post('/load',obj).then(function(data){
 			$scope.products = data.data;
 			$scope.sendData();
+			
 		});
 	}
 	
-	/*$scope.getProducts = function(){
-		$http.get('/load').then(function(data){
-			//console.log(data.data);
-			$scope.products = data.data;
-			$scope.sendData();
-		});
-	}*/
 	$scope.editOrAdd = function(obj){
 		$scope.newp = obj ? obj : {};
 		$scope.showAddProduct()
@@ -138,47 +150,64 @@ module.controller('productCtrl', function($scope,$http,$timeout){
 		}
 	}
 
-	/*$scope.myCategory = function(){
-		$http.get('/loadCategory').then(function(data){
-			$scope.categoryObj = data.data;
-			$scope.selectCategory = $scope.categoryObj[0].name
-
-			for(var i = 0; i < $scope.categoryObj.length; i++){
-				$scope.categoryObj[i].value = $scope.categoryObj[i].name;
-			}
-			var first = {
-					name: "Усі товари",
-					value:""
-				}
-				$scope.categoryObj.unshift(first);
-		});
-			
-	}*/
+	$scope.load = true;
 
 	$scope.selectProduct = function(obj){
+		$scope.load = false;
 		//console.log(obj);
+		$('.searchingInput').val('');
 		var redirectCategory = {
-			value: $("#my_select option:selected").text()
+			category: $("#my_select option:selected").text()
 		}
-		if (redirectCategory.value == 'Усі товари') {
+		if (redirectCategory.category == 'Усі товари') {
 			redirectCategory = {};
+			$scope.load = true;
 		}
-		//console.log(test);
-		/*var newStr = $.trim(str);
-		//console.log(newStr);
-
-		var obj = {
-			category: newStr
-		}
-		if (obj.category == 'Усі') {
-			obj = {};
-		}
-		//$scope.myC = obj;*/
-				//$scope.selectCategory = obj;
-				//$scope.getProducts($scope.selectCategory);
+		//console.log(redirectCategory);
 		$scope.getProducts(redirectCategory);
 	}
+	$scope.search = {}
+	$scope.searchingProducts = function(item){
+		$scope.liItems = [];
+		var output = [];
+		$scope.visual = false;
+
+		if ($scope.load == true) {
+			$scope.getProducts();
+		}
+		
+		for(var i = 0; i < $scope.products.length; i++){
+			
+			if($scope.products[i].name.toLowerCase().match(item.toLowerCase()) !== null){
+				if (output.indexOf($scope.products[i].name) !== -1) {
+					continue;
+				}
+				/*var letters = $scope.products[i].name; 
+				for(var j = 0; j < letters.length; j++){
+					if (letters[j] == item) {
+						$(letters[j]).addClass('sch');
+					}
+				}*/
+				output.push($scope.products[i].name);
+				$scope.liItems = output;
+
+				if ($scope.products[i].name.toLowerCase().match(item.toLowerCase()) == '') {
+					$scope.liItems = [];
+					output = [];
+					$scope.load = false;
+				}
+			}
+		}
+		
+	}
 	
-	//$scope.myCategory();
+	$scope.hideLi = function(item){
+		$scope.search.item = item;	
+		$scope.visual = true;
+	}
+	
 	$scope.getProducts();
-});	
+	
+});
+
+

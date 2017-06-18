@@ -1,31 +1,34 @@
-
-<!-- <button ng-click="showProduct()" class="btn btn-info goToProducts">Products</button> -->
-<p class="routingCart"><a href="#" ng-click="showProduct()">{{current.routing}}</a><i class="fa fa-angle-double-right" aria-hidden="true"></i><span>{{current.routingCart}}</span></p>
-<table class="table table-striped table-bordered myTable">
-	<tr>
-		<th>Назва товару</th>
-		<th>Кількість товару</th>
-		<th>Ціна</th>
-		<th>Відміна</th>
-	</tr>
-	<tr ng-repeat="item in cart">
-		<td>{{item.name}} {{item.model}}</td>
-		<td><button class="btn btn-danger btn-xs minus" ng-click="minusCount(item)">-</button>{{item.newcount}}<button class="btn btn-success btn-xs plus" ng-click="plusCount(item)">+</button></td>
-		<td>{{item.newprice}}</td>
-		<td><button class="btn btn-danger btn-xs" ng-click="delete(item)"><i class="fa fa-trash-o"></i></button></td>
-	</tr>
-</table>
+<div ng-controller="orderCtrl">
+	<p class="routingCart"><a href="#" ng-click="showProduct()">{{current.routing}}</a><i class="fa fa-angle-double-right" aria-hidden="true"></i><span>{{current.routingCart}}</span></p>
+	<table class="table table-striped table-bordered myTable">
+		<tr>
+			<th>Назва товару</th>
+			<th>Кількість товару</th>
+			<th>Ціна</th>
+			<th>Відміна</th>
+		</tr>
+		<tr ng-repeat="item in cart">
+			<td>{{item.name}} {{item.model}}</td>
+			<td><button class="btn btn-danger btn-xs minus" ng-click="minusCount(item)">-</button>{{item.newcount}}<button class="btn btn-success btn-xs plus" ng-click="plusCount(item)">+</button></td>
+			<td>{{item.newprice}}</td>
+			<td><button class="btn btn-danger btn-xs" ng-click="delete(item)"><i class="fa fa-trash-o"></i></button></td>
+		</tr>
+	</table>
 	<div class="panel panel-info">
 		<div class="panel-heading">
 			<h4>Загальна вартість: {{totalSum()}} грн</h4>
-			<button class="btn btn-success order" ng-click="showForm = ! showForm">Оформити Замовлення</button>
+			<button class="btn btn-success order" 
+			ng-click="showForm = ! showForm"
+			ng-hide="cart.length == 0">Оформити Замовлення</button>
 		</div>
 	</div>
 	<div class="for-phone" ng-show="showForm">
 		<form action="" class="form-order">
-			<input type="text" placeholder="Введіть номер телефону:" class="form-control" ng-model='order.phone'>
+			<h4 id="myDate">{{newDate}}</h4>
+			<input type="text" placeholder="Введіть номер телефону:" id="orderPhone" class="form-control" 
+			ng-model='order.phone'>
 			<input type="button" value="Завершити оформлення" class="btn btn-success" ng-click="sendOrder(order)">
 			<input type="button" ng-click="showForm = ! showForm" class="btn btn-warning" value="Відмінити">
-			<!-- <h4 id="myDate">{{today | date: 'dd.MM.yyyy HH:mm:ss'}}</h4> -->
 		</form>
 	</div>
+</div>	

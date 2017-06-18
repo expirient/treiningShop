@@ -1,6 +1,6 @@
-var module = angular.module('usersApp',[]);
+var module = angular.module('adminApp',[]);
 
-module.controller('userCtrl', function($scope,$http){
+module.controller('adminCtrl', function($scope,$http){
 	$scope.methodIn = function(){
 		$http.get('/getUser').then(function(data){
 			console.log(data.data);

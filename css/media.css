@@ -3,12 +3,76 @@
 /* Large Devices, Wide Screens */
 @media only screen and (max-width : 1200px) {
 	.myHeading button{
-		width: 30%;
+		width: 25%;
+	}
+	.personalRoom table{
+		margin-top: 60px;
+	}
+	.personalRoom table th{
+		font-size: 16px;
+	}
+	.personalRoom table td{
+		font-size: 14px;
+	}
+	.personalRoom table span{
+		font-size: 16px;
+	}
+	.personalRoom div.forPhoto{
+		margin-top: 60px;
+	}
+}
+@media only screen and (max-width : 1050px){
+	.personalRoom table th{
+		font-size: 14px;
+	}
+	.personalRoom table td{
+		font-size: 12px;
+		
+	}
+	.personalRoom table span{
+		font-size: 14px;
+	}
+	.personalRoom table thead{
+		display: none;
+	}
+	.personalRoom table td:before{
+		content: attr(data-label);
+	}
+}
+@media only screen and (max-width : 1008px){
+	.myHeading .menu{
+		text-align: center;
+		width: 100%;
+		top: 49px;
+		left: 15px;
+		background: rgba(22,22,22, 0.8);
+		border-radius: 4px;
+		margin-right: 0;
+		padding: 10px 15px 10px 15px;
+		//float: left;
+		left: 0;
+	}
+	.myHeading button{
+		width: 100%;
+		margin: 5px 0;
+		float: none;
+	}
+	.myHeading a{
+		float: none;
+		margin-top: 10px;
+		margin: 5px auto;
 	}
 }
 
 /* Medium Devices, Desktops */
 @media only screen and (max-width : 992px) {
+	/* .myHeading button{
+		width: 50%;
+		margin-top: 5px;
+	} */
+	/* .myHeading .menu{
+		top: 50px;
+	} */
 	.forLogForm .logForm{
 		margin: 10% auto 0;
 	}
@@ -25,21 +89,163 @@
 		max-width: 100%;
 		height: auto;
 	}
+	
+	.about div.img{
+		float: none;
+		margin: 0 auto;
+	}
+	.personalRoom table{
+		margin-top: 10px;
+	}
+	.personalRoom div.forPhoto{
+		margin-top: 50px;
+	}
+	.contacts .fa-arrow-right{
+		display: none;
+	}
+}
+@media only screen and (max-width : 860px) {
+	.personalRoom table{
+		margin-top: 10px;
+	}
+	.personalRoom div.forPhoto{
+		margin-top: 0;
+	}
+	.ForRegForm .regForm{
+		width: 50%;
+	}
+	/* .personalRoom table th{
+		font-size: 12px;
+	}
+	.personalRoom table td{
+		font-size: 10px;
+	
+	}
+	.personalRoom table span{
+		font-size: 12px;
+	} */
+	footer .copy{
+		float: none;
+		margin-top: 50px;
+	}
 }
 
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {
-
+	.single-product img{
+		max-width: 100%;
+	}
+	/* .myHeading .menu{
+		width: 40%;
+	} */
+	/* .myHeading button{
+		width: 80%;
+	} */
+	.single-product h1{
+		font: 26px Zetta;
+	}
+	.single-product h1 span{
+		font-size: 28px;
+	}
+	.about div.img{
+		
+		margin: 30px auto 0;
+	}
+	.personalRoom table td{
+		word-break: break-all;
+	}
+}
+@media only screen and (max-width : 600px) {
+	.sorting-searching select{
+		width: 100%;
+	}
+	.sorting-searching .search{
+		left: 0;
+		top: 70px;
+		width: 100%;
+	}
+	.sorting-searching .search input[type='text']{
+		width: 80%;
+	}
+	.forLogForm a{
+		width: 100%;
+	}
+	.forLogForm .logForm input,
+	.forLogForm .logForm button{
+		width: 100%;
+	}
+	/* .myHeading .menu{
+		width: 50%;
+	} */
 }
 
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px) {
-
+	.boxMessages .forMessages{
+		width: 95%;
+	}
+	.boxMessages .forMessages button{
+		width: 80%;
+	}
+	.boxMessages button{
+		width: 80%;
+	}
+	/* .myHeading button{
+		width: 100%;
+	} */
+	.ForRegForm .regForm{
+		width: 90%;
+	}
+	.my-panel-body{
+		margin-top: 50px;
+	}
+	.for-slider{
+		margin-top: 50px;
+	}
+	.myTable{
+		margin-top: 70px;
+	}
+	.myTable th,
+	.myTable td{
+		display: block;
+	}
+	.personalRoom div.forPhoto{
+		margin-top: 40px;
+	}
+	/* .myHeading .menu{
+		width: 60%;
+	} */
+	.about .contacts div{
+		margin: 10px auto;
+	}
+	.galery-block .forButton button{
+		width: 80%;
+	}
+	.galery-block img{
+		float: none;
+	}
 }
 
-/* Custom, iPhone Retina */
-@media only screen and (max-width : 320px) {
 
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 380px) {
+	.boxMessages .forMessages div h4 span{
+		margin-left: 0;
+		font-size: 16px;
+	}
+	/* .myHeading .menu{
+		width: 90%;
+	} */
+	.about .contacts{
+		word-break: break-all;
+	}
+	.about .description h3{
+		word-break: break-all;
+	}
+	.about div.img {
+		float: none;
+		padding: 15px;
+	}
 }
 
 

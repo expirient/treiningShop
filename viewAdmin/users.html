@@ -1,0 +1,54 @@
+
+
+	<h3>Зареєстровані користувачі:</h3>
+	<table class="table table-bordered tableOrders">
+		<tr>
+			<th>Імя</th>
+			<!-- <th>Логін</th> -->
+			<th>Телефон</th>
+			<th>Ел. Адреса</th>
+			<th>Лист</th>
+			<th>Замовлення</th>
+		</tr>
+		<tr ng-repeat="item in peoples">
+			<td>{{item.name}}</td>
+			<!-- <td>{{item.login}}</td> -->
+			<td>{{item.phone}}</td>
+			<td>{{item.email}}</td>
+			<td class="letter">
+				<button class="btn" ng-click="showTextArea = ! showTextArea"><i class="fa fa-envelope-o" aria-hidden="true"></i></button>
+				<div class="forTextArea" ng-show="showTextArea">
+					<form action="">
+						<textarea placeholder="Введіть текст" name="" id="" cols="70" rows="10"
+						ng-model="message.text"></textarea>
+						<input type="button" value="Відправити" class="btn btn-success"
+						ng-click="sendMassege(this,message)">
+						<input type="button" value="Відмінити" class="btn btn-danger"
+						ng-click="showTextArea = ! showTextArea">
+					</form>
+				</div>
+			</td>
+			<td>
+				<table class="tableForOrders table table-bordered">
+					<tr>
+						<th>Дата</th>
+						<th>Назва</th>
+						<th>Модель</th>
+						<th>Категорія</th>
+						<th>Кількість</th>
+						<th>Сума</th>
+						<th>Hа складі</th>
+					</tr>
+					<tr ng-repeat="orders in item.orders" class="tableForOrders">
+						<td class="td"">{{orders.date}}</td>
+						<td class="td"">{{orders.name}}</td>
+						<td class="td">{{orders.model}}</td>
+						<td class="td" >{{orders.category}}</td>
+						<td class="td">{{orders.newcount}}</td>
+						<td class="td"><span>{{orders.newprice}}</span></td>
+						<td class="td">{{orders.count}}</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>

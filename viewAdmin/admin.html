@@ -10,7 +10,6 @@
 	<link rel="shortcut icon" href="favicon.png"/>
 	<script src="https://use.fontawesome.com/c3d1976be9.js"></script>
 	<script src='angular/angular.js'></script>
-	<!-- <script src='angular/angular.min.js'></script> -->
 	<script src="jquery.js"></script>
 	<script src="js/script.js"></script>
 	<script src='module/cart.js'></script>
@@ -20,6 +19,7 @@
 	<script src='module/order.js'></script>
 	<script src='module/admin.js'></script>
 	<script src='module/main.js'></script>
+	<script src='module/users.js'></script>
 </head>
 <body ng-controller="mainCtrl" ng-init="showAdminProducts()" >
 	
@@ -28,41 +28,70 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="panel panel-primary " ng-controller="productCtrl">
+						
 						<div ng-controller="cartCtrl" class="my-panel-body">
-							<div class="panel-heading myHeading-admin">
-								{{current.headingView}}
-								<!-- <button ng-click="showProduct()" class="btn btn-info goToProducts" ng-hide="current.currentView == 'view/products.html'">Товари</button> -->
-								<button class="btn btn-success" ng-click="showAddProduct()" ng-hide="current.currentView == 'viewAdmin/addProduct.html'"> Додати товар </button>
-								<button class="btn btn-success" ng-click="showAdminOrders()" ng-hide="current.currentView == 'viewAdmin/order.html'"> Замовлення </button>
-								<button class="btn btn-success" ng-click="showAdminProducts()" ng-hide="current.currentView == 'viewAdmin/adminProducts.html'"> Повернутись</button>
-								<div class="routingAll">
-									<p>
-									<i class="fa fa-angle-double-right" aria-hidden="true"></i><a href="#" ng-click="showAdminProducts()">{{current.routing}}</a><i class="fa fa-angle-double-right" aria-hidden="true" ng-show="current.currentView == 'viewAdmin/addProduct.html'">
-									</i><span ng-show="current.currentView == 'viewAdmin/addProduct.html'">{{current.routingAddProduct}}</span>
-									<i class="fa fa-angle-double-right" aria-hidden="true" ng-show="current.currentView == 'viewAdmin/order.html'"></i><span ng-show="current.currentView == 'viewAdmin/order.html'">{{current.routingOrder}}</span>
-									<i class="fa fa-angle-double-right" aria-hidden="true" ng-show="current.currentView == 'viewAdmin/adminCategory.html'"></i><span ng-show="current.currentView == 'viewAdmin/adminCategory.html'">{{current.routingCategory}}</span>
-									</p>
-								</div>
-								<div class="adminHello" ng-controller="userCtrl">
-									<h5>Вітаємо на сайті: <span>  {{username | uppercase}}.</span></h5>
-									<button class="btn btn-danger btn-xs logout" ng-click="logout()">Розлогуватись</button>
-								</div>
-								<!-- <button ng-click="showCart()" class="btn btn-info cartButton">
-								<i class="fa fa-shopping-cart fa-lg"></i> Корзина <span class="badge" ng-show="cart.length > 0">{{cart.length}}</span></button> -->
-							</div>
+
+							<div ng-controller="usersCtrl">
 							
-							<div class="panel-body">
-								<div class="col-md-2">
-									<ul class="nav nav-pills nav-stacked myNav">
-									  <li role="presentation" ng-class="{active: current.currentView == 'viewAdmin/adminProducts.html'}"><a href="#" ng-click="showAdminProducts()">Товари</a></li>
-									  <li role="presentation" ng-class="{active: current.currentView == 'viewAdmin/adminCategory.html'}"><a href="#" ng-click="showAdminCategory()">Категорії</a></li>
-									  <li role="presentation" ng-class="{active: current.currentView == 'viewAdmin/order.html'}"><a href="#" ng-click="showAdminOrders()">Замовлення</a></li>
-									 <!--  <li role="presentation"><a href="#">Коментарі</a></li> -->
-									</ul>
-								</div>
-								<div class="col-md-10" ng-include="current.currentView" scope="" onload="">
+							<div ng-controller="orderCtrl">
+							
+								<div class="panel-heading myHeading-admin">
+									{{current.headingView}}
+									<button class="btn btn-success" ng-click="showAddProduct()" ng-hide="current.adminCurrentView == 'viewAdmin/addProduct.html'"> Додати товар </button>
+									<button class="btn btn-success" ng-click="showAdminOrders()" ng-hide="current.adminCurrentView == 'viewAdmin/order.html'"> Замовлення </button>
+									<button class="btn btn-success" ng-click="showAdminProducts()" ng-hide="current.adminCurrentView == 'viewAdmin/adminProducts.html'"> Повернутись</button>
+									<div class="routingAll">
+										<p>
+										<i class="fa fa-angle-double-right" aria-hidden="true"></i><a href="#" ng-click="showAdminProducts()">{{current.routing}}</a><i class="fa fa-angle-double-right" aria-hidden="true" ng-show="current.adminCurrentView == 'viewAdmin/addProduct.html'">
+										</i><span ng-show="current.adminCurrentView == 'viewAdmin/addProduct.html'">{{current.routingAddProduct}}</span>
+										<i class="fa fa-angle-double-right" aria-hidden="true" ng-show="current.adminCurrentView == 'viewAdmin/order.html'"></i><span ng-show="current.adminCurrentView == 'viewAdmin/order.html'">{{current.routingOrder}}</span>
+										<i class="fa fa-angle-double-right" aria-hidden="true" ng-show="current.adminCurrentView == 'viewAdmin/adminCategory.html'"></i><span ng-show="current.adminCurrentView == 'viewAdmin/adminCategory.html'">{{current.routingCategory}}</span>
+										</p>
+									</div>
 									
+									<div class="adminHello" ng-controller="adminCtrl">
+										<h5>Вітаємо на сайті: <span>  {{username | uppercase}}.</span></h5>
+										<button class="btn btn-danger btn-xs logout" ng-click="logout()">Розлогуватись</button>
+									</div>
+
 								</div>
+								
+								<div class="panel-body">
+									<div class="col-md-2">
+										<ul class="nav nav-pills nav-stacked myNav">
+										  <li role="presentation" 
+										  ng-class="{active: current.adminCurrentView == 'viewAdmin/adminProducts.html'}"><a href="#" 
+										  ng-click="showAdminProducts()">Товари</a></li>
+										  <li role="presentation" 
+										  ng-class="{active: current.adminCurrentView == 'viewAdmin/adminCategory.html'}"><a href="#" 
+										  ng-click="showAdminCategory()">Категорії</a></li>
+										  <li role="presentation" 
+										  ng-class="{active: current.adminCurrentView == 'viewAdmin/order.html'}"><a href="#" 
+										  ng-click="showAdminOrders()">Замовлення</a></li>
+										  <li role="presentation"
+										  ng-class="{active: current.adminCurrentView == 'viewAdmin/users.html'}"><a href="#"
+										  ng-click="showAllUsers()">Користувачі</a></li>
+										</ul>
+									</div>
+									
+									<div class="col-md-10" ng-include="current.adminCurrentView" scope="" onload="">
+										
+									</div>
+								</div>
+								<footer class="first-footer clearfix">
+									<div id="qoo-counter">
+										<!-- <a href="http://qoo.by/" title="Бесплатный счетчик посещений на сайт"> -->
+										<img src="http://qoo.by/counter/standard/001.png" alt="Счетчик посещаемости и статистика сайта">
+										<div id="qoo-counter-visits"></div>
+										<div id="qoo-counter-views"></div>
+										</a>
+									</div>
+										<script type="text/javascript" src="http://qoo.by/counter.js"></script>
+									<div class="copy">
+										<h5>Created by <span>Ohorenko Volodymyr</span> (Expirient) <span class="cr">&copy;</span></h5>
+									</div>
+								</footer>
+							</div>
 							</div>
 						</div>	
 					</div>

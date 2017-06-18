@@ -11,7 +11,7 @@
     <div class="form-group">
       <label for="category">Категорія: </label>
       <select class="form-control select-category" id="category" 
-        ng-model="newp.category" required 
+        ng-model="selectCategory.name" required 
           ng-options="item._id as item.name for item in categorys">
           <option ng-if="false"></option>
       </select>
@@ -46,7 +46,7 @@
   </form>
       <iframe name="result" class="myIframe" send-data></iframe>
 
-  <button type="submit" class="btn btn-primary" ng-click="addProduct(newp)">Add Product</button>
+  <!-- <button type="submit" class="btn btn-primary" ng-click="addProduct(newp)">Add Product</button> -->
   <button type="submit" class="btn btn-primary" ng-click="saveProduct(newp)">Save Product</button>
   <!-- <div order-list="products" display='name model'>
     

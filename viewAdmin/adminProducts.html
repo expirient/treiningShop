@@ -39,15 +39,15 @@
 			<!-- <div class="col-md-12"> -->
 				<ul class="pagination" ng-if="obj.pages.length">
 				    
-				    <li ng-class="{disabled: obj.currentPage == 1}"><a href="#" ng-click="setPage(1)">First</a></li>
-				    <li ng-class="{disabled: obj.currentPage == 1}"><a href="#" ng-click="setPage(obj.currentPage - 1)">Previous</a></li>
+				    <li ng-class="{disabled: obj.currentPage == 1}"><a href="#" ng-click="setPage(1)">Перша</a></li>
+				    <li ng-class="{disabled: obj.currentPage == 1}"><a href="#" ng-click="setPage(obj.currentPage - 1)">Попередня</a></li>
 
 				    <li ng-repeat="page in obj.pages" ng-class="{active: page == obj.currentPage}">
 				    <a href="#" ng-click="setPage(page)">{{page}}</a>
 				    </li>
 
-					<li ng-class="{disabled: obj.currentPage == obj.totalPage}"><a href="#" ng-click="setPage(obj.currentPage + 1)">Next</a></li>
-					<li ng-class="{disabled: obj.currentPage == obj.totalPage}"><a href="#" ng-click="setPage(obj.totalPage)">Last</a></li>
+					<li ng-class="{disabled: obj.currentPage == obj.totalPage}"><a href="#" ng-click="setPage(obj.currentPage + 1)">Наступна</a></li>
+					<li ng-class="{disabled: obj.currentPage == obj.totalPage}"><a href="#" ng-click="setPage(obj.totalPage)">Остання</a></li>
 				   
 				</ul>
 			<!-- </div>

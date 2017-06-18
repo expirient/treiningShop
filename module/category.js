@@ -1,21 +1,8 @@
 var module = angular.module('categoryApp',[]);
 
 module.controller('categoryCtrl', function($scope,$http,$timeout){
-	//$scope.categorys = [];
+	$scope.selectCategory = {}
 	
-	/*$scope.categoryData = function(){
-		$scope.$broadcast('categorys',{categorys: $scope.categorys});
-	}*/
-	/*$timeout(function(){	
-		$http.get('/loadCategory').then(function(data){
-			$scope.categorys = data.data;
-			console.log($scope.categorys);
-			 $scope.newp = {
-			    category :$scope.categorys[0]._id
-			  };
-			  console.log($scope.newp);
-		});
-	},0);*/
 	$timeout(function(){
 		$http.get('/loadCategory').then(function(data){
 			$scope.categoryObj = data.data;
@@ -33,10 +20,15 @@ module.controller('categoryCtrl', function($scope,$http,$timeout){
 				$scope.selectCategory = {
 					name: $scope.categoryObj[0]._id
 				}
-				console.log($scope.selectCategory);
+				/*$scope.selectCategory=$scope.categoryObj[0];*/
+				//console.log($scope.selectCategory);
 		});
-	},0);
+	});
 
+	$scope.sendCategory = function(){
+		//console.log($scope.selectCategory);
+		$scope.$emit('selectCategory',{selectCategory: $scope.selectCategory});
+	}
 	
 	$scope.saveCategory = function(obj){
 		$scope.category = {};
@@ -56,27 +48,21 @@ module.controller('categoryCtrl', function($scope,$http,$timeout){
 	}
 	$scope.updateCategory = function(obj){
 		$scope.category = {};
-		console.log(obj)
+		//console.log(obj)
 		$http.post('/updateCategory',obj).then(function(data){
 				$scope.getCategory();
 				//console.log(typeof($scope.category));
 		});
 	}
 
-	/*$timeout(function(){
-		$scope.newp = {
-		    category :$scope.categorys[0].name
-		};
-	},1000);*/
 	
 	$scope.getCategory = function(){
 		$http.get('/loadCategory').then(function(data){
 			$scope.categorys = data.data;
 			//console.log($scope.categorys);
 		});
-		//console.log($scope.categorys);
 	}
-	//console.log($scope.categorys);
+	
 	$scope.deleteCategory = function(obj){
 		$http.post('/deleteCategory',obj).then(function(data){
 			$scope.getCategory();

@@ -6,10 +6,15 @@ var schemaOrder = new mongoose.Schema({
 		require: true
 	},
 	client: {
-		type: String
+		type: String,
+		require: true
 	},
 	phone: {
 		type: Number,
+		require: true
+	},
+	email: {
+		type: String,
 		require: true
 	},
 	order: {
