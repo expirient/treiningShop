@@ -99,9 +99,9 @@ var passport = require('passport');
 	var myAuth = function(req,res,next){
 		
 		if(req.isAuthenticated()){// повертае  true/false
-			/*if (req.user.username !== 'admin' || req.user.username == undefined) {
+			if (req.user.username !== 'admin' || req.user.username == undefined) {
 				res.redirect('/login');
-			}*/
+			}
 			next();
 		}	
 		else{
